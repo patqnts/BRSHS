@@ -7,32 +7,52 @@ public class PlayerController : MonoBehaviour
     private FixedJoystick joystick;
     public float moveSpeed = 5f;
     private Vector2 movementInput;
+    private Animator animator;
+    public CircleCollider2D circleCollider;
+    private Rigidbody2D rb;
 
     private void Start()
     {
         joystick = FindObjectOfType<FixedJoystick>();
+        animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
+
     private void Update()
     {
-        // Get joystick input
         movementInput = new Vector2(joystick.Horizontal, joystick.Vertical);
     }
 
     private void FixedUpdate()
     {
-        // Move the player based on joystick input
         MovePlayer();
     }
 
-    private void MovePlayer()
+    void MovePlayer()
     {
-        // Calculate movement direction
-        Vector3 movement = new Vector3(movementInput.x, movementInput.y, 0f);
-
-        // Normalize the movement vector to prevent faster movement diagonally
+        Vector2 movement = new Vector2(movementInput.x, movementInput.y);
         movement.Normalize();
 
-        // Move the player
-        transform.Translate(movement * moveSpeed * Time.fixedDeltaTime);
+        rb.velocity = movement * moveSpeed;
+
+        UpdateAnimatorParameters(movement);
+    }
+
+    private void UpdateAnimatorParameters(Vector2 movement)
+    {
+        animator.SetFloat("x", movement.x);
+        animator.SetFloat("y", movement.y);
+    }
+
+    public void OnInteractionButtonClick()
+    {
+        StartCoroutine(EnableDisableCollider());
+    }
+
+    private IEnumerator EnableDisableCollider()
+    {
+        circleCollider.enabled = true;
+        yield return new WaitForSeconds(1f);
+        circleCollider.enabled = false;
     }
 }

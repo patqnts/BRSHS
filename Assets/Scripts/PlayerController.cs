@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public FixedJoystick joystick;
+    private FixedJoystick joystick;
     public float moveSpeed = 5f;
     private Vector2 movementInput;
 

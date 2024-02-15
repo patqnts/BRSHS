@@ -16,8 +16,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 1004
-    y: 321
+    x: 874
+    y: 307
     width: 170
     height: 115
   isDragging: 0
@@ -44,18 +44,47 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 304
-    y: 151
+    x: -172
+    y: 164
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: NPC
-    text: I am an npc
+    characterName: Yao
+    text: Hello, can I ask for a favor
     characterSprite: {fileID: 21300000, guid: 933d530e1ff06fc46b501c7201bff005, type: 3}
   parentNode: {fileID: 0}
   childNode: {fileID: 1592011933179238529}
+--- !u!114 &-898487017026838237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1717f3c6dba9fa40844ddacac301510, type: 3}
+  m_Name: Answer Node
+  m_EditorClassIdentifier: 
+  connectedNodesList: []
+  nodeGraph: {fileID: 11400000}
+  rect:
+    serializedVersion: 2
+    x: 258
+    y: 174
+    width: 190
+    height: 135
+  isDragging: 0
+  isSelected: 0
+  answers:
+  - Sure
+  - Sorry, no.
+  parentSentenceNode: {fileID: 1592011933179238529}
+  childSentenceNodes:
+  - {fileID: 4139992637509685085}
+  - {fileID: 5295553973756563560}
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +105,10 @@ MonoBehaviour:
   - {fileID: 4716590383346545323}
   - {fileID: -1634721202794102744}
   - {fileID: 2952728075679261389}
+  - {fileID: -898487017026838237}
+  - {fileID: 4744896568093309353}
+  - {fileID: 4139992637509685085}
+  - {fileID: 5295553973756563560}
   nodeToDrawLineFrom: {fileID: 0}
   linePosition: {x: 0, y: 0}
 --- !u!114 &584099127633721335
@@ -94,8 +127,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 1006
-    y: 88
+    x: 876
+    y: 74
     width: 170
     height: 115
   isDragging: 0
@@ -122,18 +155,18 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 559
-    y: 153
+    x: 51
+    y: 177
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: NPC
-    text: This is a second
+    characterName: Yao
+    text: Would you help me clean the room
     characterSprite: {fileID: 21300000, guid: 933d530e1ff06fc46b501c7201bff005, type: 3}
   parentNode: {fileID: -1629187235548436143}
-  childNode: {fileID: 2155218648300129814}
+  childNode: {fileID: -898487017026838237}
 --- !u!114 &2155218648300129814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,10 +183,10 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 764
-    y: 125
+    x: 687
+    y: -7
     width: 190
-    height: 175
+    height: 215
   isDragging: 0
   isSelected: 0
   answers:
@@ -184,8 +217,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 1218
-    y: 195
+    x: 1088
+    y: 181
     width: 170
     height: 115
   isDragging: 0
@@ -195,6 +228,34 @@ MonoBehaviour:
     text: last
     characterSprite: {fileID: 0}
   parentNode: {fileID: 584099127633721335}
+  childNode: {fileID: 0}
+--- !u!114 &4139992637509685085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32a464d8ccff4e40a60c45b40a1e648, type: 3}
+  m_Name: Sentence Node
+  m_EditorClassIdentifier: 
+  connectedNodesList: []
+  nodeGraph: {fileID: 11400000}
+  rect:
+    serializedVersion: 2
+    x: 479
+    y: 151
+    width: 170
+    height: 115
+  isDragging: 0
+  isSelected: 0
+  sentence:
+    characterName: Yao
+    text: Really?! Thank you
+    characterSprite: {fileID: 0}
+  parentNode: {fileID: -898487017026838237}
   childNode: {fileID: 0}
 --- !u!114 &4716590383346545323
 MonoBehaviour:
@@ -212,8 +273,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 1013
-    y: 200
+    x: 883
+    y: 186
     width: 170
     height: 115
   isDragging: 0
@@ -224,3 +285,57 @@ MonoBehaviour:
     characterSprite: {fileID: 0}
   parentNode: {fileID: 2155218648300129814}
   childNode: {fileID: 2952728075679261389}
+--- !u!114 &4744896568093309353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1717f3c6dba9fa40844ddacac301510, type: 3}
+  m_Name: Answer Node
+  m_EditorClassIdentifier: 
+  connectedNodesList: []
+  nodeGraph: {fileID: 11400000}
+  rect:
+    serializedVersion: 2
+    x: 436
+    y: 35
+    width: 190
+    height: 115
+  isDragging: 0
+  isSelected: 0
+  answers:
+  - 
+  parentSentenceNode: {fileID: 0}
+  childSentenceNodes: []
+--- !u!114 &5295553973756563560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32a464d8ccff4e40a60c45b40a1e648, type: 3}
+  m_Name: Sentence Node
+  m_EditorClassIdentifier: 
+  connectedNodesList: []
+  nodeGraph: {fileID: 11400000}
+  rect:
+    serializedVersion: 2
+    x: 478
+    y: 273
+    width: 170
+    height: 115
+  isDragging: 0
+  isSelected: 0
+  sentence:
+    characterName: Yao
+    text: A-alright...
+    characterSprite: {fileID: 0}
+  parentNode: {fileID: -898487017026838237}
+  childNode: {fileID: 0}

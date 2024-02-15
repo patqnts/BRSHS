@@ -5,7 +5,12 @@ public class DraggableBroom : MonoBehaviour
 {
     private bool isDragging = false;
     private Vector3 offset;
-    
+    public Collider2D collision;
+
+    private void Start()
+    {
+        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision, true);
+    }
     void Update()
     {
         if (isDragging)

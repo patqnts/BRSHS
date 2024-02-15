@@ -999,6 +999,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialog Prefab
       objectReference: {fileID: 0}
+    - target: {fileID: 5790137693722899738, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 74d6ee547ced1cd4197b96bab889596c, type: 2}
+    - target: {fileID: 5790137693722899738, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7250229689785646963, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
       propertyPath: onDialogStarted.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1058,6 +1066,26 @@ PrefabInstance:
     - target: {fileID: 7250229689785646963, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
       propertyPath: onDialogFinished.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345451046969563053, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_fontSize
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345451046969563053, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 74d6ee547ced1cd4197b96bab889596c, type: 2}
+    - target: {fileID: 7345451046969563053, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345451046969563053, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 7345451046969563053, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9198993882433154880, guid: 0bd08184220c9914a877f3a735221e05, type: 3}
       propertyPath: m_Color.a

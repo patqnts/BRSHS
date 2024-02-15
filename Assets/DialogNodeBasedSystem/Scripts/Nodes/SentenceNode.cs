@@ -11,6 +11,7 @@ namespace cherrydev
         [Space(10)]
         public Node parentNode;
         public Node childNode;
+        public string sceneName;
 
         private const float lableFieldSpace = 40f;
         private const float textFieldWidth = 90f;

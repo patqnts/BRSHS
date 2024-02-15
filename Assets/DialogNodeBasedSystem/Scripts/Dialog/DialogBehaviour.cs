@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 namespace cherrydev
 {
@@ -100,14 +101,16 @@ namespace cherrydev
             if (currentNode.GetType() == typeof(SentenceNode))
             {
                 SentenceNode sentenceNode = (SentenceNode)currentNode;
-
+               
                 isCurrentSentenceSkipped = false;
 
                 OnSentenceNodeActive?.Invoke();
                 OnSentenceNodeActiveWithParameter?.Invoke(sentenceNode.GetSentenceCharacterName(), sentenceNode.GetSentenceText(),
                     sentenceNode.GetCharacterSprite());
 
-                WriteDialogText(sentenceNode.GetSentenceText());
+                WriteDialogText(sentenceNode.GetSentenceText(),sentenceNode);
+
+              
             }
             else if (currentNode.GetType() == typeof(AnswerNode))
             {
@@ -181,9 +184,9 @@ namespace cherrydev
         /// Writing dialog text
         /// </summary>
         /// <param name="text"></param>
-        private void WriteDialogText(string text)
+        private void WriteDialogText(string text,SentenceNode sceneName)
         {
-            StartCoroutine(WriteDialogTextRoutine(text));
+            StartCoroutine(WriteDialogTextRoutine(text, sceneName));
         }
 
         /// <summary>
@@ -191,7 +194,7 @@ namespace cherrydev
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        private IEnumerator WriteDialogTextRoutine(string text)
+        private IEnumerator WriteDialogTextRoutine(string text, SentenceNode sceneName)
         {
             foreach (char textChar in text)
             {
@@ -205,9 +208,13 @@ namespace cherrydev
 
                 yield return new WaitForSeconds(dialogCharDelay);
             }
-
+            
             yield return new WaitUntil(CheckNextSentenceKeyCodes);
 
+            if (!string.IsNullOrEmpty(sceneName.sceneName))
+            {
+               SceneManager.LoadScene(sceneName.sceneName);
+            }
             CheckForDialogNextNode();
         }
 

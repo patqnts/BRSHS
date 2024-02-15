@@ -22,4 +22,5 @@ public class TrashcanScript : MonoBehaviour
             dialogBehaviour.StartDialog(dialogGraph);
         }
     }
+    //this is a test commit/update
 }

@@ -8,6 +8,7 @@ public class BinScript : MonoBehaviour
     private Animator animator;
     [SerializeField]
     private string garbageType;
+    [SerializeField] SegregateGame game;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -18,11 +19,13 @@ public class BinScript : MonoBehaviour
         if (collision.gameObject.tag == garbageType)
         {
             Debug.Log("Correct");
+            game.AddScore();
             animator.SetTrigger("Open");
             Destroy(collision.gameObject);
         }
         else
         {
+            game.MinusScore();
             Debug.Log("Wrong");
         }
     }

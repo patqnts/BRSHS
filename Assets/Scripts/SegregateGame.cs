@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SegregateGame : MonoBehaviour
 {
+    [SerializeField]
+    private Text garbageName;
     [SerializeField]
     private int highScore;
     [SerializeField]
@@ -15,7 +18,7 @@ public class SegregateGame : MonoBehaviour
     public float speed = 5f;
     public Transform pointA;
     public Transform pointB;
-
+    public Text scoreText;
     // Start is called before the first frame update
     void Start()
     {
@@ -31,11 +34,26 @@ public class SegregateGame : MonoBehaviour
         }
     }
 
+    public void AddScore()
+    {
+        currentScore++;
+        scoreText.text = $"Score: {currentScore}";
+    }
+
+    public void MinusScore()
+    {
+        if (currentScore > 0)
+        {
+            currentScore--;
+            scoreText.text = $"Score: {currentScore}";
+        }
+    }
+
     void MoveGarbage()
     {
         if (currentGarbage != null)
         {
-            // Implement your horizontal movement logic here
+            garbageName.text = currentGarbage.name.Replace("(Clone)", "");
             float step = speed * Time.deltaTime;
 
             if (movingRight)
@@ -47,7 +65,6 @@ public class SegregateGame : MonoBehaviour
                 currentGarbage.transform.position = Vector3.MoveTowards(currentGarbage.transform.position, pointA.position, step);
             }
 
-            // Check if the garbage has reached the destination, then change direction
             if (currentGarbage.transform.position == pointB.position)
             {
                 movingRight = false;
@@ -57,38 +74,36 @@ public class SegregateGame : MonoBehaviour
                 movingRight = true;
             }
 
-            // Check if a button is pressed to stop movement and drop the garbage
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                canMove = false;
-                DropGarbage();
-            }
+            
         }
     }
 
-    void DropGarbage()
+    public void ButtonFunction()
+    {
+     
+            canMove = false;
+            DropGarbage();
+    }
+
+     void DropGarbage()
     {
         if (currentGarbage != null)
         {
             Rigidbody2D rb = currentGarbage.GetComponent<Rigidbody2D>();
             if (rb != null)
             {
-                rb.gravityScale = 1f; // Enable gravity for the garbage
+                rb.gravityScale = 1.5f; 
             }
 
-            // Add any additional logic for dropping the garbage
-
-            // Destroy the current garbage after a certain time or condition
             Destroy(currentGarbage, 2f);
 
-            // Instantiate a new random garbage
             InstantiateRandomGarbage();
         }
     }
 
     void InstantiateRandomGarbage()
     {
-        canMove = true; // Enable movement for the new garbage
+        canMove = true;
         int randomIndex = Random.Range(0, garbagePrefabs.Length);
         currentGarbage = Instantiate(garbagePrefabs[randomIndex], new Vector3(0, 0, 0), Quaternion.identity);
     }

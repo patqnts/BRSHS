@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class UserSessionScript : MonoBehaviour
 {
+
+
     private float sessionStartTime;
     private bool notificationSent = false;
 
@@ -22,19 +24,45 @@ public class UserSessionScript : MonoBehaviour
 
     PlayerData playerData;
 
+    private static UserSessionScript instance;
+
+    public static UserSessionScript Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                // Try to find the existing instance in the scene
+                instance = FindObjectOfType<UserSessionScript>();
+
+                // If no instance exists, create a new one
+                if (instance == null)
+                {
+                    GameObject obj = new GameObject("UserSessionScript");
+                    instance = obj.AddComponent<UserSessionScript>();
+                    DontDestroyOnLoad(obj);
+                }
+            }
+            return instance;
+        }
+    }
     public string[] GetSavedPlayerDataFiles()
     {
         return Directory.GetFiles(Application.persistentDataPath);
     }
     private void Awake()
     {
+        if (instance != null && instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
         sessionStartTime = Time.time;
         DontDestroyOnLoad(gameObject);
-    }
-    private void Start()
-    {
-        //LoadPlayerDataFromFile(selectedString);
-        //LoadPlayerData(playerData);
     }
 
     private void Update()
@@ -82,6 +110,7 @@ public class UserSessionScript : MonoBehaviour
 
     public void LoadPlayerDataFromFile(string fileName)
     {
+        selectedString = fileName;
         if (File.Exists(fileName))
         {
             string jsonData = File.ReadAllText(fileName);
@@ -92,8 +121,8 @@ public class UserSessionScript : MonoBehaviour
         else
         {
             Debug.Log($"File not found: {fileName}");
-        }
-        selectedString = fileName;
+            SavePlayerData();
+        }       
         SceneManager.LoadScene("MainGame");
     }
     private string GetSavePath()

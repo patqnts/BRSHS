@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,10 +27,11 @@ public class MainMenuData : MonoBehaviour
             // Instantiate save slot prefab
             GameObject saveSlot = Instantiate(saveSlotPrefab, parent);
 
+            string name = Path.GetFileNameWithoutExtension(fileName);
             // Get the Text component of the instantiated save slot
             Text saveSlotText = saveSlot.GetComponentInChildren<Text>();
 
-            saveSlotText.text = fileName;
+            saveSlotText.text = name;
 
             // Add a button or click event to load the selected player data
             Button saveSlotButton = saveSlot.GetComponent<Button>();

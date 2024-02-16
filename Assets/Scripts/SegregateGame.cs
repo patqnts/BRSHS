@@ -37,8 +37,12 @@ public class SegregateGame : MonoBehaviour
     [SerializeField] private DialogNodeGraph winGraph;
     [SerializeField] private DialogNodeGraph loseGraph;
     // Start is called before the first frame update
+
+    
+    public UserSessionScript user;
     void Start()
     {
+        user = FindObjectOfType<UserSessionScript>();
         dialogBehaviour.StartDialog(dialogGraph);
     }
 

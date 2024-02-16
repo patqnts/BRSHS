@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
 using UnityEngine.UI;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class LeafGenerator : MonoBehaviour
 {
@@ -27,8 +28,12 @@ public class LeafGenerator : MonoBehaviour
 
     public bool isStart;
     private bool hasGameEnded = false;
+
+
+    public UserSessionScript user;
     void Start()
     {
+        user = FindObjectOfType<UserSessionScript>();
         startDialogBehaviour.StartDialog(dialogGraph);       
     }
 

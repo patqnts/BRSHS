@@ -1,6 +1,8 @@
+using cherrydev;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SegregateGame : MonoBehaviour
@@ -18,20 +20,62 @@ public class SegregateGame : MonoBehaviour
     public float speed = 5f;
     public Transform pointA;
     public Transform pointB;
+
     public Text scoreText;
+    public Text highScoreText;
+    public Text timerText;
+
+    public float gameDuration = 60f; // Set the game duration in seconds
+    private float timer;
+    public bool isStart;
+
+    [SerializeField] private DialogBehaviour dialogBehaviour;
+    [SerializeField] private DialogNodeGraph dialogGraph;
+
+
+    [SerializeField] private DialogBehaviour vinishBehaviour;
+    [SerializeField] private DialogNodeGraph winGraph;
+    [SerializeField] private DialogNodeGraph loseGraph;
     // Start is called before the first frame update
     void Start()
     {
-        InstantiateRandomGarbage();
+        dialogBehaviour.StartDialog(dialogGraph);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (canMove)
+        if (isStart)
         {
-            MoveGarbage();
+            if (canMove)
+            {
+                MoveGarbage();
+            }
+
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                UpdateTimerDisplay();
+            }
+            else
+            {
+                EndGame();
+            }
         }
+    }
+
+    void StartGame()
+    {
+        isStart = true;
+        highScoreText.text = $"High score: {highScore}";
+        timer = gameDuration;
+        UpdateTimerDisplay();
+        InstantiateRandomGarbage();
+    }
+    void UpdateTimerDisplay()
+    {
+        // Display the timer in the UI text
+        timerText.text = $"Time: {Mathf.Ceil(timer)}";
     }
 
     public void AddScore()
@@ -80,9 +124,11 @@ public class SegregateGame : MonoBehaviour
 
     public void ButtonFunction()
     {
-     
+     if(isStart)
+        {
             canMove = false;
             DropGarbage();
+        }      
     }
 
      void DropGarbage()
@@ -106,5 +152,45 @@ public class SegregateGame : MonoBehaviour
         canMove = true;
         int randomIndex = Random.Range(0, garbagePrefabs.Length);
         currentGarbage = Instantiate(garbagePrefabs[randomIndex], new Vector3(0, 0, 0), Quaternion.identity);
+    }
+
+    void EndGame()
+    {
+        // Check if the current score is higher than the high score
+        if (currentScore > highScore)
+        {
+            // Call the function for winning
+            WinGame();
+        }
+        else
+        {
+            // Call the function for losing
+            LoseGame();
+        }
+    }
+
+    void WinGame()
+    {
+        Debug.Log("You won!");
+        // Add your winning logic here
+        isStart = false;
+        vinishBehaviour.StartDialog(dialogGraph);
+    }
+
+    void LoseGame()
+    {
+        Debug.Log("You lost!");
+        isStart = false;
+        vinishBehaviour.StartDialog(dialogGraph);
+    }
+
+    public void StartGameButton()
+    {
+        StartGame();
+    }
+
+    public void EndScene()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 }

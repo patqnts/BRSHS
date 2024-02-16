@@ -1,6 +1,10 @@
+using cherrydev;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 
 public class LeafGenerator : MonoBehaviour
 {
@@ -10,11 +14,53 @@ public class LeafGenerator : MonoBehaviour
 
     private List<Vector3Int> spawnedLeafPositions = new List<Vector3Int>();
 
+    public float gameDuration = 60f; // Set the game duration in seconds
+    private float timer;
+    public Text timerText;
+
+    [SerializeField] private DialogBehaviour startDialogBehaviour;
+    [SerializeField] private DialogNodeGraph dialogGraph;
+
+    [SerializeField] private DialogBehaviour finishBehaviour;
+    [SerializeField] private DialogNodeGraph winGraph;
+    [SerializeField] private DialogNodeGraph loseGraph;
+
+    public bool isStart;
+    private bool hasGameEnded = false;
     void Start()
     {
-        GenerateLeaves();
+        startDialogBehaviour.StartDialog(dialogGraph);       
     }
 
+    private void Update()
+    {
+        if (isStart && !hasGameEnded)
+        {
+            if (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                UpdateTimerDisplay();
+            }
+            else
+            {
+                EndGame();
+            }
+        }
+    }
+
+    public void StartGame()
+    {
+        timer = gameDuration;
+        isStart = true;
+        GenerateLeaves();
+        UpdateTimerDisplay();
+    }
+
+    void UpdateTimerDisplay()
+    {
+        // Display the timer in the UI text
+        timerText.text = $"Time: {Mathf.Ceil(timer)}";
+    }
     void GenerateLeaves()
     {
         BoundsInt bounds = tilemap.cellBounds;
@@ -46,5 +92,28 @@ public class LeafGenerator : MonoBehaviour
         int y = Random.Range(bounds.y + 1, bounds.y + bounds.size.y - 1);
 
         return new Vector3Int(x, y, bounds.z);
+    }
+
+    void EndGame()
+    {
+        hasGameEnded = true;
+        LoseGame();
+    }
+
+    public void WinGame()
+    {
+        Debug.Log("You won!");
+        // Add your winning logic here
+        finishBehaviour.StartDialog(winGraph);
+    }
+
+    void LoseGame()
+    {
+        finishBehaviour.StartDialog(loseGraph);
+    }
+
+    public void EndScene()
+    {
+        SceneManager.LoadScene("MainGame");
     }
 }

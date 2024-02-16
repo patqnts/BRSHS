@@ -4,12 +4,25 @@ using UnityEngine;
 
 public class LeafDestroyer : MonoBehaviour
 {
-
+    LeafGenerator leafGenerator;
+    private void Start()
+    {
+        leafGenerator = FindObjectOfType<LeafGenerator>();
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Leaf"))
         {
-            Destroy(other.gameObject);
+            if(leafGenerator.numberOfLeaves>0)
+            {
+                leafGenerator.numberOfLeaves--;
+                Destroy(other.gameObject);
+            }
+            else
+            {
+                leafGenerator.WinGame();
+            }
+           
         }
     }
 }

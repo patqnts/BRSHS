@@ -23,7 +23,7 @@ public class UserSessionScript : MonoBehaviour
 
     public string[] GetSavedPlayerDataFiles()
     {
-        return Directory.GetFiles(Application.persistentDataPath, "playerData_*.json");
+        return Directory.GetFiles(Application.persistentDataPath);
     }
     private void Awake()
     {
@@ -62,7 +62,7 @@ public class UserSessionScript : MonoBehaviour
             Coins = coins,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
-            ClearSeg = clearSeg
+            ClearSeg = clearSeg,
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(GetSavePath(), jsonData);

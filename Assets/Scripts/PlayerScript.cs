@@ -13,10 +13,4 @@ public class PlayerScript : MonoBehaviour
     public bool ClearSeg;
     public bool ClearPick;
 
-    public PlayerController playerController;
-    void Start()
-    {
-        playerController = FindObjectOfType<PlayerController>();
-    }
-
 }

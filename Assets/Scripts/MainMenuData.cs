@@ -1,33 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MainMenuData : MonoBehaviour
 {
     public UserSessionScript userSession;
+    public GameObject saveSlotPrefab; // Prefab for the save slot
+    public Transform parent;
+    public string selectedSlot;
 
     void Start()
     {
         userSession = FindObjectOfType<UserSessionScript>();
-        // Access the UserSessionScript and call the method to get saved player data files
+        DisplaySavedPlayerDataFiles();
+    }
+
+    // Display saved player data files using save slots
+    void DisplaySavedPlayerDataFiles()
+    {
         string[] savedPlayerDataFiles = userSession.GetSavedPlayerDataFiles();
 
-        // Display the list of saved player data files (you can customize this part)
         foreach (string fileName in savedPlayerDataFiles)
         {
-            Debug.Log($"Saved Player Data File: {fileName}");
+            // Instantiate save slot prefab
+            GameObject saveSlot = Instantiate(saveSlotPrefab, parent);
+
+            // Get the Text component of the instantiated save slot
+            Text saveSlotText = saveSlot.GetComponentInChildren<Text>();
+
+            saveSlotText.text = fileName;
+
+            // Add a button or click event to load the selected player data
+            Button saveSlotButton = saveSlot.GetComponent<Button>();
+            saveSlotButton.onClick.AddListener(() => LoadSelectedPlayerData(fileName));
+
+            saveSlot.SetActive(true);
         }
     }
 
-    // Add a method to load a specific player data file based on user selection
+    // Load a specific player data file based on user selection
     public void LoadSelectedPlayerData(string selectedFileName)
     {
         userSession.LoadPlayerDataFromFile(selectedFileName);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // Your update logic here
     }
 }

@@ -18,6 +18,7 @@ public class UserSessionScript : MonoBehaviour
     public bool clearBroom;
     public bool clearSeg;
     public bool clearPick;
+    public string selectedString;
 
     PlayerData playerData;
 
@@ -32,7 +33,8 @@ public class UserSessionScript : MonoBehaviour
     }
     private void Start()
     {
-        LoadPlayerData(playerData);
+        //LoadPlayerDataFromFile(selectedString);
+        //LoadPlayerData(playerData);
     }
 
     private void Update()
@@ -65,27 +67,7 @@ public class UserSessionScript : MonoBehaviour
             ClearSeg = clearSeg,
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
-        File.WriteAllText(GetSavePath(), jsonData);
-    }
-
-    // Load player data from JSON
-    public void LoadPlayerData(PlayerData playerData)
-    {
-
-        string filePath = GetSavePath();
-
-        if (File.Exists(filePath))
-        {
-            string jsonData = File.ReadAllText(filePath);
-            playerData = JsonUtility.FromJson<PlayerData>(jsonData);
-            PopulatePlayerData(playerData);
-        }
-        else
-        {
-            // If the save file doesn't exist, create a new PlayerData instance
-            playerData = new PlayerData();
-            PopulatePlayerData(playerData);
-        }
+        File.WriteAllText(selectedString, jsonData);
     }
     void PopulatePlayerData(PlayerData playerData)
     {
@@ -111,7 +93,7 @@ public class UserSessionScript : MonoBehaviour
         {
             Debug.Log($"File not found: {fileName}");
         }
-
+        selectedString = fileName;
         SceneManager.LoadScene("MainGame");
     }
     private string GetSavePath()

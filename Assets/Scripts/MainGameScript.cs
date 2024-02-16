@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainGameScript : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.coins = playerScript.Coins;
 
         userSessionScript.SavePlayerData();
+
+        SceneManager.LoadScene("MainMenu");
     }
 
     void LoadPlayerData()

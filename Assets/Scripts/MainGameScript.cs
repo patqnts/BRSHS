@@ -19,6 +19,13 @@ public class MainGameScript : MonoBehaviour
         LoadPlayerData();
     }
 
+    public void GoToMenu()
+    {
+
+        Save();
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void Save()
     {
         userSessionScript.playerPos = playerController.transform.position;
@@ -30,10 +37,7 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.coins = playerScript.Coins;
 
         userSessionScript.SavePlayerData();
-
-        SceneManager.LoadScene("MainMenu");
     }
-
     void LoadPlayerData()
     {
         playerController.transform.position = userSessionScript.playerPos;

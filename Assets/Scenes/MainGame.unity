@@ -12161,7 +12161,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.675478, y: -6.8681397, z: -10}
+  m_LocalPosition: {x: 11.67574, y: -6.8681397, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13074,7 +13074,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -338652320, guid: d24f888b7ef93d6499ff8eab3456342d, type: 3}
+  m_Sprite: {fileID: 101481524, guid: d24f888b7ef93d6499ff8eab3456342d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14797,8 +14797,8 @@ MonoBehaviour:
   - {fileID: 1334516661}
   - {fileID: 721671135}
   dialogGraph:
-  - {fileID: 11400000, guid: b1686251081fdf24189c2e430bb3964d, type: 2}
-  - {fileID: 11400000, guid: 6e1ecd5253f03aa40aea294c67f7cdd0, type: 2}
+  - {fileID: 11400000, guid: 265ef3de765663d4d8daf95d8b344fbe, type: 2}
+  - {fileID: 11400000, guid: 265ef3de765663d4d8daf95d8b344fbe, type: 2}
   cleared: 0
 --- !u!58 &1010087698
 CircleCollider2D:

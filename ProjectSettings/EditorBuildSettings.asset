@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Segregation.unity
     guid: ee6a79cf238f5b7499d5cb631d18e11e
+  - enabled: 1
+    path: Assets/Scenes/Pickup.unity
+    guid: 1712f4e04b2f6d441840069cf4f74142
   m_configObjects: {}

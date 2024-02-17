@@ -21,9 +21,9 @@ public class GridAutoAdjust : MonoBehaviour
         float spacing = gridLayout.spacing.y;
         float padding = gridLayout.padding.top + gridLayout.padding.bottom;
 
-        float newHeight = Mathf.Ceil(childCount / (float)gridLayout.constraintCount) * (157.8f + spacing) - spacing + padding;
+        float newHeight = Mathf.Ceil(childCount / (float)gridLayout.constraintCount) * (57f + spacing) - spacing + padding;
 
         // Set RectTransform height
-        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, (newHeight - (157.8f * 5f)));
+        rectTransform.sizeDelta = new Vector2(rectTransform.sizeDelta.x, (newHeight - (55f * 4f)));
     }
 }

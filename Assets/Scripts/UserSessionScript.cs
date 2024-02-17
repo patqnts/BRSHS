@@ -13,8 +13,8 @@ public class UserSessionScript : MonoBehaviour
     private bool notificationSent = false;
 
     [Header("Player Data")]
-    public int maxHealth;
-    public int currentHealth;
+    public int maxHealth =3;
+    public int currentHealth = 3;
     public int coins;
     public Vector2 playerPos;
     public bool clearBroom;

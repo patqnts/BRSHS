@@ -1,35 +1,42 @@
-using cherrydev;
 using UnityEngine;
 
 public class DraggableBroom : MonoBehaviour
 {
+    public Transform trashCan; // Assign the trash can object in the Inspector
     private bool isDragging = false;
-    private Vector3 offset;
-    public Collider2D collision;
+    public GameObject childObject;
 
-    private void Start()
-    {
-        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), collision, true);
-    }
     void Update()
     {
-        if (isDragging)
+        if (Input.GetMouseButton(0)) // Check if any mouse button is held down
         {
-            Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0);
-            Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+            Vector2 curScreenPoint = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+            Vector2 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);
             transform.position = curPosition;
+
+            if (childObject != null)
+            {
+                // Calculate the direction to the trash can
+                Vector3 directionToTrashCan = trashCan.position - transform.position;
+                directionToTrashCan.z = 0; // Ignore the Z component for 2D rotation
+
+                // Calculate the angle and set the rotation of the child object
+                float angle = Mathf.Atan2(directionToTrashCan.y, directionToTrashCan.x) * Mathf.Rad2Deg;
+                childObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+                // Adjust the rotation to ensure the middle part is facing the trash can
+                childObject.transform.Rotate(Vector3.forward, 90.0f);
+            }
         }
     }
 
     void OnMouseDown()
     {
         isDragging = true;
-        offset = transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
     }
 
     void OnMouseUp()
     {
         isDragging = false;
     }
-
 }

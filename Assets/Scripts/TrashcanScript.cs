@@ -23,7 +23,7 @@ public class TrashcanScript : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (score >= 8)
+        if (score >= 12)
         {
             user.coins += 10;
             user.SavePlayerData(); //save

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -45,5 +46,20 @@ public class MainMenuData : MonoBehaviour
     public void LoadSelectedPlayerData(string selectedFileName)
     {
         userSession.LoadPlayerDataFromFile(selectedFileName);
+    }
+
+    public void StartNewGame()
+    {
+        string newFileName = GenerateUniqueFileName();
+        LoadSelectedPlayerData(newFileName);
+    }
+
+    // Generate a unique file name based on timestamp
+    private string GenerateUniqueFileName()
+    {
+        DateTime now = DateTime.Now;
+        string timestamp = now.ToString("yyyyMMddHHmmss");
+        string newFileName = $"Save_{timestamp}.json";
+        return Path.Combine(Application.persistentDataPath, newFileName);
     }
 }

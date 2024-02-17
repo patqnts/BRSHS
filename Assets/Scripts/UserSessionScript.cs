@@ -97,6 +97,22 @@ public class UserSessionScript : MonoBehaviour
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
     }
+
+    public void NewPlayerData()
+    {
+        PlayerData currentPlayerData = new PlayerData()
+        {
+            MaxHealth = 3,
+            CurrentHealth = 3,
+            PlayerPos = playerPos,
+            Coins = 0,
+            ClearBroom = clearBroom,
+            ClearPick = clearPick,
+            ClearSeg = clearSeg,
+        };
+        string jsonData = JsonUtility.ToJson(currentPlayerData);
+        File.WriteAllText(selectedString, jsonData);
+    }
     void PopulatePlayerData(PlayerData playerData)
     {
         maxHealth = playerData.MaxHealth;
@@ -121,7 +137,8 @@ public class UserSessionScript : MonoBehaviour
         else
         {
             Debug.Log($"File not found: {fileName}");
-            SavePlayerData();
+            //SavePlayerData();
+            NewPlayerData();
         }       
         SceneManager.LoadScene("MainGame");
     }

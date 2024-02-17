@@ -22,6 +22,15 @@ public class MainGameScript : MonoBehaviour
     public void GoToMenu()
     {
         Save();
+
+        userSessionScript.playerPos = new Vector2(0,0);
+        userSessionScript.maxHealth = 3;
+        userSessionScript.currentHealth = 3;
+        userSessionScript.clearPick = false;
+        userSessionScript.clearBroom = false;
+        userSessionScript.clearSeg = false;
+        userSessionScript.coins = 0;
+
         SceneManager.LoadScene("MainMenu");
     }
 

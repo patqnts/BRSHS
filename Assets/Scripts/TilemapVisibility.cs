@@ -7,15 +7,17 @@ public class TilemapVisibility : MonoBehaviour
 {
     public float transitionSpeed = 0.2f;
     private List<TilemapRenderer> tilemapRenderers;
+    public TilemapRenderer roofTile;
     private bool isPlayerInside = false;
 
     void Start()
     {
         // Get all TilemapRenderer components under the Room object
         tilemapRenderers = new List<TilemapRenderer>(GetComponentsInChildren<TilemapRenderer>());
-
+        tilemapRenderers.Remove(roofTile);
         // Set the initial transparency to fully transparent
         SetTilemapTransparency(0f);
+        SetRoofTransaparency(1f);
     }
 
     void Update()
@@ -24,11 +26,13 @@ public class TilemapVisibility : MonoBehaviour
         if (isPlayerInside)
         {
             SetTilemapTransparency(Mathf.Lerp(GetTilemapTransparency(), 1f, Time.deltaTime * transitionSpeed));
+            SetRoofTransaparency(Mathf.Lerp(GetRoofTransparency(), 0f, Time.deltaTime * transitionSpeed));
         }
         // If the player is outside the trigger box, gradually hide the tilemap
         else
         {
             SetTilemapTransparency(Mathf.Lerp(GetTilemapTransparency(), 0f, Time.deltaTime * transitionSpeed));
+            SetRoofTransaparency(Mathf.Lerp(GetRoofTransparency(), 1f, Time.deltaTime * transitionSpeed));
         }
     }
 
@@ -61,6 +65,13 @@ public class TilemapVisibility : MonoBehaviour
         }
     }
 
+    void SetRoofTransaparency(float alpha)
+    {
+        Color color = roofTile.material.color;
+        color.a = alpha;
+        roofTile.material.color = color;
+    }
+
     // Get the transparency of the first TilemapRenderer in the list (assuming they have the same material)
     float GetTilemapTransparency()
     {
@@ -69,5 +80,10 @@ public class TilemapVisibility : MonoBehaviour
             return tilemapRenderers[0].material.color.a;
         }
         return 0f;
+    }
+
+    float GetRoofTransparency()
+    {
+        return roofTile.material.color.a;
     }
 }

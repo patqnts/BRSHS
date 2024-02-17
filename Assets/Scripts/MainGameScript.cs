@@ -21,7 +21,6 @@ public class MainGameScript : MonoBehaviour
 
     public void GoToMenu()
     {
-
         Save();
         SceneManager.LoadScene("MainMenu");
     }

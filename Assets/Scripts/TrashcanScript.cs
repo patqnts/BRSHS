@@ -25,6 +25,8 @@ public class TrashcanScript : MonoBehaviour
 
         if (score >= 8)
         {
+            user.coins += 10;
+            user.SavePlayerData(); //save
             dialogBehaviour.StartDialog(dialogGraph);
         }
     }

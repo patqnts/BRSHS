@@ -121,7 +121,6 @@ public class SegregateGame : MonoBehaviour
             {
                 movingRight = true;
             }
-
             
         }
     }
@@ -175,9 +174,10 @@ public class SegregateGame : MonoBehaviour
 
     void WinGame()
     {
-        Debug.Log("You won!");
-        // Add your winning logic here
+        OriginalReward();
         isStart = false;
+        user.coins += 10;
+        user.SavePlayerData(); //save
         vinishBehaviour.StartDialog(dialogGraph);
     }
 
@@ -185,6 +185,8 @@ public class SegregateGame : MonoBehaviour
     {
         Debug.Log("You lost!");
         isStart = false;
+        user.currentHealth--;
+        user.SavePlayerData(); //save
         vinishBehaviour.StartDialog(dialogGraph);
     }
 
@@ -196,5 +198,11 @@ public class SegregateGame : MonoBehaviour
     public void EndScene()
     {
         SceneManager.LoadScene("MainGame");
+    }
+
+    void OriginalReward()
+    {
+        user.maxHealth++;
+        user.currentHealth++;
     }
 }

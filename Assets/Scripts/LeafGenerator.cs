@@ -109,11 +109,16 @@ public class LeafGenerator : MonoBehaviour
     {
         Debug.Log("You won!");
         // Add your winning logic here
+        user.coins += 10;
+        user.clearPick = true;
+        user.SavePlayerData();
         finishBehaviour.StartDialog(winGraph);
     }
 
     void LoseGame()
     {
+        user.currentHealth--;
+        user.SavePlayerData();
         finishBehaviour.StartDialog(loseGraph);
     }
 

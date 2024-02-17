@@ -174,9 +174,10 @@ public class SegregateGame : MonoBehaviour
 
     void WinGame()
     {
-        OriginalReward();
+        //OriginalReward();
         isStart = false;
         user.coins += 10;
+        user.clearSeg = true;
         user.SavePlayerData(); //save
         vinishBehaviour.StartDialog(winGraph);
     }

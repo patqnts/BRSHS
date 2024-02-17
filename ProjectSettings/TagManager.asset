@@ -9,6 +9,7 @@ TagManager:
   - Bio
   - Non
   - Leaf
+  - Vision
   layers:
   - Default
   - TransparentFX

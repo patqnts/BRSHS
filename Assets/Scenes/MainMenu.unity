@@ -870,9 +870,9 @@ MonoBehaviour:
   maxHealth: 3
   currentHealth: 3
   coins: 0
-  playerPos: {x: 0, y: 0}
+  playerPos: {x: 11.48, y: -7.5754}
   clearBroom: 0
-  clearSeg: 0
+  clearSeg: 1
   clearPick: 0
   selectedString: 
 --- !u!4 &1342104267

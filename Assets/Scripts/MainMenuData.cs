@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,10 +11,12 @@ public class MainMenuData : MonoBehaviour
     public UserSessionScript userSession;
     public GameObject saveSlotPrefab; // Prefab for the save slot
     public Transform parent;
+    public GridAutoAdjust grid;
     public string selectedSlot;
 
     void Start()
     {
+        grid = FindObjectOfType<GridAutoAdjust>();
         userSession = FindObjectOfType<UserSessionScript>();
         DisplaySavedPlayerDataFiles();
     }
@@ -40,6 +43,7 @@ public class MainMenuData : MonoBehaviour
 
             saveSlot.SetActive(true);
         }
+        grid.AdjustGridLayout();
     }
 
     // Load a specific player data file based on user selection
@@ -57,9 +61,30 @@ public class MainMenuData : MonoBehaviour
     // Generate a unique file name based on timestamp
     private string GenerateUniqueFileName()
     {
-        DateTime now = DateTime.Now;
-        string timestamp = now.ToString("yyyyMMddHHmmss");
-        string newFileName = $"Save_{timestamp}.json";
+        int saveNumber = GetNextSaveNumber();
+        string newFileName = $"PlayerSave_{saveNumber}.json";
         return Path.Combine(Application.persistentDataPath, newFileName);
+    }
+
+    private int GetNextSaveNumber()
+    {
+        string[] savedFiles = userSession.GetSavedPlayerDataFiles();
+        int maxSaveNumber = 0;
+
+        foreach (string fileName in savedFiles)
+        {
+            string name = Path.GetFileNameWithoutExtension(fileName);
+            if (name.StartsWith("PlayerSave_"))
+            {
+                // Extract the number part of the file name and find the maximum
+                if (int.TryParse(name.Substring("PlayerSave_".Length), out int number))
+                {
+                    maxSaveNumber = Mathf.Max(maxSaveNumber, number);
+                }
+            }
+        }
+
+        // Increment the maximum save number to get the next available number
+        return maxSaveNumber + 1;
     }
 }

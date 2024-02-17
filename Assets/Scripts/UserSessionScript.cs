@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
-using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 
 public class UserSessionScript : MonoBehaviour
@@ -13,8 +12,8 @@ public class UserSessionScript : MonoBehaviour
     private bool notificationSent = false;
 
     [Header("Player Data")]
-    public int maxHealth =3;
-    public int currentHealth = 3;
+    public int maxHealth;
+    public int currentHealth;
     public int coins;
     public Vector2 playerPos;
     public bool clearBroom;

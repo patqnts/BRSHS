@@ -2065,10 +2065,11 @@ MonoBehaviour:
   gameDuration: 60
   isStart: 0
   dialogBehaviour: {fileID: 65079168}
-  dialogGraph: {fileID: 11400000, guid: 6e1ecd5253f03aa40aea294c67f7cdd0, type: 2}
+  dialogGraph: {fileID: 11400000, guid: 19f9997b63d202f4b9a39ccf6c360511, type: 2}
   vinishBehaviour: {fileID: 2813139}
-  winGraph: {fileID: 11400000, guid: 25cb85cdc3168794b836da03cea3d337, type: 2}
-  loseGraph: {fileID: 11400000, guid: 25cb85cdc3168794b836da03cea3d337, type: 2}
+  winGraph: {fileID: 11400000, guid: 088d8c100460c3e40bccb252ff36e778, type: 2}
+  loseGraph: {fileID: 11400000, guid: 316c9395a0f1f5142ae239218894e675, type: 2}
+  user: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

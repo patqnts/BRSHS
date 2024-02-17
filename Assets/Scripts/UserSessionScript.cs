@@ -103,7 +103,7 @@ public class UserSessionScript : MonoBehaviour
         {
             MaxHealth = 3,
             CurrentHealth = 3,
-            PlayerPos = playerPos,
+            PlayerPos = new Vector2(11.48f, -7.5754f),
             Coins = 0,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
@@ -111,6 +111,7 @@ public class UserSessionScript : MonoBehaviour
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
+        PopulatePlayerData(currentPlayerData);
     }
     void PopulatePlayerData(PlayerData playerData)
     {

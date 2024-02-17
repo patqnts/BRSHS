@@ -178,7 +178,7 @@ public class SegregateGame : MonoBehaviour
         isStart = false;
         user.coins += 10;
         user.SavePlayerData(); //save
-        vinishBehaviour.StartDialog(dialogGraph);
+        vinishBehaviour.StartDialog(winGraph);
     }
 
     void LoseGame()
@@ -187,7 +187,7 @@ public class SegregateGame : MonoBehaviour
         isStart = false;
         user.currentHealth--;
         user.SavePlayerData(); //save
-        vinishBehaviour.StartDialog(dialogGraph);
+        vinishBehaviour.StartDialog(loseGraph);
     }
 
     public void StartGameButton()

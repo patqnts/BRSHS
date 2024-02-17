@@ -504,7 +504,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: B-CON
+  m_Text: B CON
 --- !u!222 &449500775
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -867,12 +867,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddd554c125111249b5e69227165d0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  currentHealth: 3
+  maxHealth: 0
+  currentHealth: 0
   coins: 0
-  playerPos: {x: 11.48, y: -7.5754}
+  playerPos: {x: 0, y: 0}
   clearBroom: 0
-  clearSeg: 1
+  clearSeg: 0
   clearPick: 0
   selectedString: 
 --- !u!4 &1342104267

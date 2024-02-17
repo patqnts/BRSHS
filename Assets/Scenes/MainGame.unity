@@ -12161,7 +12161,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.675946, y: -6.8681397, z: -10}
+  m_LocalPosition: {x: 11.675478, y: -6.8681397, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13633,8 +13633,8 @@ MonoBehaviour:
   - {fileID: 1470892009}
   - {fileID: 342534833}
   dialogGraph:
-  - {fileID: 11400000, guid: b1686251081fdf24189c2e430bb3964d, type: 2}
-  - {fileID: 11400000, guid: 6e1ecd5253f03aa40aea294c67f7cdd0, type: 2}
+  - {fileID: 11400000, guid: a5d0d4249b40ca64c8bdaa181a947763, type: 2}
+  - {fileID: 11400000, guid: a5d0d4249b40ca64c8bdaa181a947763, type: 2}
   cleared: 0
 --- !u!58 &740461412
 CircleCollider2D:

@@ -5,7 +5,7 @@ public class SettingsManager : MonoBehaviour
 {
     public Slider volumeSlider;
     public Slider brightnessSlider;
-
+    private SpriteRenderer[] allSpriteRenderers;
     private void Start()
     {
         // Load saved settings on start
@@ -32,17 +32,26 @@ public class SettingsManager : MonoBehaviour
 
         if (brightnessSlider != null)
         {
-            // Adjust brightness (you might need a different approach based on your game's requirements)
-            // Here, we're just modifying the canvas group's alpha as an example
-            CanvasGroup canvasGroup = GetComponent<CanvasGroup>();
-            if (canvasGroup != null)
-                canvasGroup.alpha = brightnessSlider.value;
+            // Update brightness slider
+            UpdateBrightness();
 
             // Save brightness setting
             PlayerPrefs.SetFloat("Brightness", brightnessSlider.value);
         }
     }
-
+    private void UpdateBrightness()
+    {
+        if (brightnessSlider != null)
+        {
+            // Adjust brightness for all SpriteRenderers
+            allSpriteRenderers = FindObjectsOfType<SpriteRenderer>();
+            foreach (SpriteRenderer spriteRenderer in allSpriteRenderers)
+            {
+                Color originalColor = spriteRenderer.color;
+                spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, brightnessSlider.value);
+            }
+        }
+    }
     private void LoadSettings()
     {
         if (PlayerPrefs.HasKey("Volume"))

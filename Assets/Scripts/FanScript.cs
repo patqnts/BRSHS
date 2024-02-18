@@ -7,28 +7,26 @@ public class FanScript : MonoBehaviour
     // Start is called before the first frame update
 
     public Animator animator;
-    public UserSessionScript userSession;
+    public PlayerScript player;
+    public MainGameScript mainGameScript;
     void Start()
     {
-        userSession = FindObjectOfType<UserSessionScript>();
+        player = FindObjectOfType<PlayerScript>();
+        mainGameScript = FindObjectOfType<MainGameScript>();
         CheckFan();
     }
 
     void CheckFan()
     {
-        if (userSession.clearFan)
+        if (player.ClearFan)
         {
             animator.SetBool("Stop", true);
         }
     }
     public void StopFan()
     {
-        
-            userSession.clearFan = true;
-            userSession.SavePlayerData();
+        player.ClearFan = true;
+        mainGameScript.Save();
         CheckFan();
-
-
-
     }
 }

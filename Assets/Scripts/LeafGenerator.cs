@@ -29,6 +29,7 @@ public class LeafGenerator : MonoBehaviour
     public bool isStart;
     private bool hasGameEnded = false;
 
+    public RewardUI rewardUI;
 
     public UserSessionScript user;
     void Start()
@@ -109,6 +110,7 @@ public class LeafGenerator : MonoBehaviour
     {
         Debug.Log("You won!");
         // Add your winning logic here
+        rewardUI.isWin = true;
         user.coins += 10;
         user.clearPick = true;
         user.SavePlayerData();
@@ -117,13 +119,12 @@ public class LeafGenerator : MonoBehaviour
 
     void LoseGame()
     {
-        user.currentHealth--;
+        rewardUI.isWin = false;
+        if(user.currentHealth > 0)
+        {
+            user.currentHealth--;
+        }
         user.SavePlayerData();
         finishBehaviour.StartDialog(loseGraph);
-    }
-
-    public void EndScene()
-    {
-        SceneManager.LoadScene("MainGame");
     }
 }

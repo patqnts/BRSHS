@@ -21,14 +21,14 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
     characterName: G1
     text: Well... you can do better next time!
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 0}
-  sceneName: 
+  sceneName: MainGame
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0

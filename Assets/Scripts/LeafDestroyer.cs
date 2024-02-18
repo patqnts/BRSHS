@@ -18,11 +18,14 @@ public class LeafDestroyer : MonoBehaviour
                 leafGenerator.numberOfLeaves--;
                 Destroy(other.gameObject);
             }
-            else
-            {
-                leafGenerator.WinGame();
-            }
+
+            
            
+        }
+
+        if (leafGenerator.numberOfLeaves <= 0)
+        {
+            leafGenerator.WinGame();
         }
     }
 }

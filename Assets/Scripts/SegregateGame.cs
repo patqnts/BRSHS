@@ -29,6 +29,8 @@ public class SegregateGame : MonoBehaviour
     private float timer;
     public bool isStart;
 
+    public RewardUI rewardUI;
+
     [SerializeField] private DialogBehaviour dialogBehaviour;
     [SerializeField] private DialogNodeGraph dialogGraph;
 
@@ -175,6 +177,7 @@ public class SegregateGame : MonoBehaviour
     void WinGame()
     {
         //OriginalReward();
+        rewardUI.isWin = true;
         isStart = false;
         user.coins += 10;
         user.clearSeg = true;
@@ -185,8 +188,12 @@ public class SegregateGame : MonoBehaviour
     void LoseGame()
     {
         Debug.Log("You lost!");
+        rewardUI.isWin = false;
         isStart = false;
-        user.currentHealth--;
+        if (user.currentHealth > 0)
+        {
+            user.currentHealth--;
+        }
         user.SavePlayerData(); //save
         vinishBehaviour.StartDialog(loseGraph);
     }
@@ -194,11 +201,6 @@ public class SegregateGame : MonoBehaviour
     public void StartGameButton()
     {
         StartGame();
-    }
-
-    public void EndScene()
-    {
-        SceneManager.LoadScene("MainGame");
     }
 
     void OriginalReward()

@@ -38,14 +38,14 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: B1
     text: Look its all cleaned up.
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 794558490327265370}
-  sceneName: MainGame
+  sceneName: 
 --- !u!114 &794558490327265370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: B1
     text: You are such a life saver!

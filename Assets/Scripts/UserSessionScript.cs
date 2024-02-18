@@ -21,6 +21,8 @@ public class UserSessionScript : MonoBehaviour
     public bool clearPick;
     public string selectedString;
 
+    public bool isNewGame;
+
     PlayerData playerData;
 
     private static UserSessionScript instance;
@@ -133,11 +135,12 @@ public class UserSessionScript : MonoBehaviour
             PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
             PopulatePlayerData(loadedPlayerData);
+            isNewGame = false;
         }
         else
         {
             Debug.Log($"File not found: {fileName}");
-            //SavePlayerData();
+            isNewGame = true;
             NewPlayerData();
         }       
         SceneManager.LoadScene("MainGame");

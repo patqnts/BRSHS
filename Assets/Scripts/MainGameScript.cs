@@ -9,6 +9,8 @@ public class MainGameScript : MonoBehaviour
     public UserSessionScript userSessionScript;
     public PlayerScript playerScript;
     public PlayerController playerController;
+
+    public GameObject intro;
     void Start()
     {
         userSessionScript = FindObjectOfType<UserSessionScript>();
@@ -18,7 +20,27 @@ public class MainGameScript : MonoBehaviour
 
         LoadPlayerData();
     }
+    public void BuyHealth()
+    {
+        if (playerScript.CurrentHealth >= playerScript.MaxHealth)
+        {
+            //fullhealth already
+            return;
+        }
 
+        if (playerScript.Coins < 20)
+        {
+            //not enough coins
+            return;
+        }
+
+        if (playerScript.Coins > 20)
+        {
+            playerScript.Coins -= 20;
+            playerScript.CurrentHealth++;
+            Save();
+        }
+    }
     public void GoToMenu()
     {
         Save();
@@ -56,5 +78,10 @@ public class MainGameScript : MonoBehaviour
         playerScript.ClearBroom = userSessionScript.clearBroom;
         playerScript.ClearSeg = userSessionScript.clearSeg;
         playerScript.Coins = userSessionScript.coins;
+
+        if (userSessionScript.isNewGame)
+        {
+            intro.SetActive(true);
+        }
     }
 }

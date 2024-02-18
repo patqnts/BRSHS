@@ -1,13 +1,17 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class SettingsManager : MonoBehaviour
 {
     public Slider volumeSlider;
     public Slider brightnessSlider;
-    private SpriteRenderer[] allSpriteRenderers;
+    public Image image;
+    private Volume volume;
+
     private void Start()
     {
+        volume = FindObjectOfType<Volume>();
         // Load saved settings on start
         LoadSettings();
 
@@ -17,6 +21,9 @@ public class SettingsManager : MonoBehaviour
 
         if (brightnessSlider != null)
             brightnessSlider.value = PlayerPrefs.GetFloat("Brightness", 1f);
+
+        // Update image color based on initial brightness value
+        UpdateImageColor(brightnessSlider.value);
     }
 
     private void Update()
@@ -33,30 +40,27 @@ public class SettingsManager : MonoBehaviour
         if (brightnessSlider != null)
         {
             // Update brightness slider
-            UpdateBrightness();
+            volume.weight = brightnessSlider.value;
 
-            // Save brightness setting
+            // Update image color based on the inverted brightness value
+            UpdateImageColor(1f - brightnessSlider.value);
+
             PlayerPrefs.SetFloat("Brightness", brightnessSlider.value);
         }
     }
-    private void UpdateBrightness()
-    {
-        if (brightnessSlider != null)
-        {
-            // Adjust brightness for all SpriteRenderers
-            allSpriteRenderers = FindObjectsOfType<SpriteRenderer>();
-            foreach (SpriteRenderer spriteRenderer in allSpriteRenderers)
-            {
-                Color originalColor = spriteRenderer.color;
-                spriteRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, brightnessSlider.value);
-            }
-        }
-    }
+
     private void LoadSettings()
     {
         if (PlayerPrefs.HasKey("Volume"))
             AudioListener.volume = PlayerPrefs.GetFloat("Volume", 1f);
 
         // You can implement loading for other settings as needed
+    }
+
+    private void UpdateImageColor(float invertedBrightnessValue)
+    {
+        // Interpolate between the two colors based on the inverted brightness value
+        Color targetColor = Color.Lerp(new Color(0.57f, 0.57f, 0.57f), Color.white, invertedBrightnessValue);
+        image.color = targetColor;
     }
 }

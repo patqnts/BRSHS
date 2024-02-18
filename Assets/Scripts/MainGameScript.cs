@@ -89,6 +89,7 @@ public class MainGameScript : MonoBehaviour
         if (userSessionScript.isNewGame)
         {
             intro.SetActive(true);
+            userSessionScript.isNewGame = false;
         }
     }
 }

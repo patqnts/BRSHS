@@ -5,6 +5,7 @@ using UnityEngine;
 public class LeafDestroyer : MonoBehaviour
 {
     LeafGenerator leafGenerator;
+    public AudioSource audio;
     private void Start()
     {
         leafGenerator = FindObjectOfType<LeafGenerator>();
@@ -15,6 +16,7 @@ public class LeafDestroyer : MonoBehaviour
         {
             if(leafGenerator.numberOfLeaves>0)
             {
+                audio.Play();
                 leafGenerator.numberOfLeaves--;
                 Destroy(other.gameObject);
             }

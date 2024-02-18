@@ -40,7 +40,6 @@ public class SegregateGame : MonoBehaviour
     [SerializeField] private DialogNodeGraph loseGraph;
     // Start is called before the first frame update
 
-    
     public UserSessionScript user;
     void Start()
     {

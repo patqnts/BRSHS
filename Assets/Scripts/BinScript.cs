@@ -9,6 +9,8 @@ public class BinScript : MonoBehaviour
     [SerializeField]
     private string garbageType;
     [SerializeField] SegregateGame game;
+
+    public AudioSource audioSource;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -18,6 +20,7 @@ public class BinScript : MonoBehaviour
     {
         if (collision.gameObject.tag == garbageType)
         {
+            audioSource.Play();
             Debug.Log("Correct");
             game.AddScore();
             animator.SetTrigger("Open");

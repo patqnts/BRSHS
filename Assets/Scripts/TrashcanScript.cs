@@ -10,6 +10,8 @@ public class TrashcanScript : MonoBehaviour
     [SerializeField] private DialogBehaviour dialogBehaviour;
     [SerializeField] private DialogNodeGraph dialogGraph;
 
+    public AudioSource audioSource;
+
     public UserSessionScript user;
     private void Start()
     {
@@ -19,6 +21,7 @@ public class TrashcanScript : MonoBehaviour
     {
         if(collision.gameObject.tag == "Garbage")
         {
+            audioSource.Play();
             score++;
             Destroy(collision.gameObject);
         }

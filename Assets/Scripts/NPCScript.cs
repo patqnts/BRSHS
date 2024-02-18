@@ -9,7 +9,10 @@ public class NPCScript : MonoBehaviour
     [SerializeField] private DialogBehaviour[] dialogBehaviour;
     [SerializeField] private DialogNodeGraph[] dialogGraph;
 
+    [SerializeField] public AudioSource audioSource;
+
     public PlayerScript playerScript;
+
     public bool cleared;
 
     private void Start()
@@ -22,6 +25,7 @@ public class NPCScript : MonoBehaviour
         
         if (collision.gameObject.tag == "Player")
         {
+            audioSource.Play();
             if (playerScript.CurrentHealth <= 0)
             {
                 dialogBehaviour[1].StartDialog(dialogGraph[1]);

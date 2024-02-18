@@ -5,16 +5,21 @@ TagManager:
   serializedVersion: 2
   tags:
   - Garbage
+  - Recycle
+  - Bio
+  - Non
+  - Leaf
+  - Vision
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Environment
   - Water
   - UI
-  - 
-  - 
-  - 
+  - Recycle
+  - Bio
+  - Non
   - 
   - 
   - 

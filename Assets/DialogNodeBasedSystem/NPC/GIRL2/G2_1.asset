@@ -16,8 +16,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 580
-    y: 205
+    x: 255
+    y: 197
     width: 190
     height: 115
   isDragging: 0
@@ -45,14 +45,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: -24
-    y: 128
+    x: -349
+    y: 120
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: Hello, what's up?
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
@@ -74,14 +74,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 402
-    y: 328
+    x: 77
+    y: 320
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: Okay, goodbye!
     characterSprite: {fileID: 0}
   parentNode: {fileID: -668833505990272308}
@@ -103,12 +103,12 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 188
-    y: 237
+    x: -137
+    y: 229
     width: 190
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   answers:
   - Do you need some help?
   - Nevermind.
@@ -154,14 +154,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 751
-    y: 359
+    x: 426
+    y: 351
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: Okay, goodbye!
     characterSprite: {fileID: 0}
   parentNode: {fileID: -6704190806870149432}
@@ -183,14 +183,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 837
-    y: 187
+    x: 512
+    y: 179
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: Great!
     characterSprite: {fileID: 0}
   parentNode: {fileID: -6704190806870149432}
@@ -212,14 +212,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 404
-    y: 176
+    x: 79
+    y: 168
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: Oh for sure. Help me clean this mess here If you dont mind.
     characterSprite: {fileID: 0}
   parentNode: {fileID: -668833505990272308}

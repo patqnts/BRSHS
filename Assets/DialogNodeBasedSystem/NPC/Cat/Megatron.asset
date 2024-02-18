@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-7196280312816103557
+--- !u!114 &-7930694371388353274
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -16,8 +16,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 342
-    y: 341
+    x: 373
+    y: 276
     width: 170
     height: 115
   isDragging: 0
@@ -25,6 +25,35 @@ MonoBehaviour:
   sentence:
     characterName: 
     text: 
+    characterSprite: {fileID: 0}
+  parentNode: {fileID: 0}
+  childNode: {fileID: 0}
+  sceneName: 
+--- !u!114 &-4442318366394425993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a32a464d8ccff4e40a60c45b40a1e648, type: 3}
+  m_Name: Sentence Node
+  m_EditorClassIdentifier: 
+  connectedNodesList: []
+  nodeGraph: {fileID: 11400000}
+  rect:
+    serializedVersion: 2
+    x: 178
+    y: 224
+    width: 170
+    height: 115
+  isDragging: 0
+  isSelected: 1
+  sentence:
+    characterName: Megatron
+    text: Moew!
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 0}
@@ -39,69 +68,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33f741ea10ebcf842a91c9b871dd032a, type: 3}
-  m_Name: G2_3
+  m_Name: Megatron
   m_EditorClassIdentifier: 
   nodesList:
-  - {fileID: 4786051088477659401}
-  - {fileID: 1923643228955613572}
-  - {fileID: -7196280312816103557}
+  - {fileID: -4442318366394425993}
+  - {fileID: -7930694371388353274}
   nodeToDrawLineFrom: {fileID: 0}
   linePosition: {x: 0, y: 0}
---- !u!114 &1923643228955613572
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32a464d8ccff4e40a60c45b40a1e648, type: 3}
-  m_Name: Sentence Node
-  m_EditorClassIdentifier: 
-  connectedNodesList: []
-  nodeGraph: {fileID: 11400000}
-  rect:
-    serializedVersion: 2
-    x: 306
-    y: 175
-    width: 170
-    height: 115
-  isDragging: 0
-  isSelected: 0
-  sentence:
-    characterName: Fleur
-    text: Here's some reward for you!
-    characterSprite: {fileID: 0}
-  parentNode: {fileID: 4786051088477659401}
-  childNode: {fileID: 0}
-  sceneName: 
---- !u!114 &4786051088477659401
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a32a464d8ccff4e40a60c45b40a1e648, type: 3}
-  m_Name: Sentence Node
-  m_EditorClassIdentifier: 
-  connectedNodesList: []
-  nodeGraph: {fileID: 11400000}
-  rect:
-    serializedVersion: 2
-    x: 106
-    y: 169
-    width: 170
-    height: 115
-  isDragging: 0
-  isSelected: 0
-  sentence:
-    characterName: Fleur
-    text: You are very good at this!
-    characterSprite: {fileID: 0}
-  parentNode: {fileID: 0}
-  childNode: {fileID: 1923643228955613572}
-  sceneName: 

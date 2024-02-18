@@ -10555,7 +10555,7 @@ GameObject:
   - component: {fileID: 179203434}
   - component: {fileID: 179203435}
   m_Layer: 0
-  m_Name: Catto
+  m_Name: Albert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16168,8 +16168,8 @@ MonoBehaviour:
   - {fileID: 1573030936}
   - {fileID: 473693224}
   dialogGraph:
-  - {fileID: 11400000, guid: 9583c4601fb1af54d85bd870954e8674, type: 2}
-  - {fileID: 11400000, guid: 9583c4601fb1af54d85bd870954e8674, type: 2}
+  - {fileID: 11400000, guid: 76cb4f2295b94154bbbf3c8b6c9e30e3, type: 2}
+  - {fileID: 11400000, guid: 76cb4f2295b94154bbbf3c8b6c9e30e3, type: 2}
   audioSource: {fileID: 607748363}
   playerScript: {fileID: 0}
   cleared: 0
@@ -27406,8 +27406,8 @@ MonoBehaviour:
   - {fileID: 398847746}
   - {fileID: 273086595}
   dialogGraph:
-  - {fileID: 11400000, guid: 9583c4601fb1af54d85bd870954e8674, type: 2}
-  - {fileID: 11400000, guid: 9583c4601fb1af54d85bd870954e8674, type: 2}
+  - {fileID: 11400000, guid: 76c8c500cf2481a4987f6f00137853ce, type: 2}
+  - {fileID: 11400000, guid: 76c8c500cf2481a4987f6f00137853ce, type: 2}
   audioSource: {fileID: 1256240942}
   playerScript: {fileID: 0}
   cleared: 0
@@ -29907,8 +29907,8 @@ MonoBehaviour:
   - {fileID: 713995507}
   - {fileID: 842604989}
   dialogGraph:
-  - {fileID: 11400000, guid: 9583c4601fb1af54d85bd870954e8674, type: 2}
-  - {fileID: 11400000, guid: 9583c4601fb1af54d85bd870954e8674, type: 2}
+  - {fileID: 11400000, guid: ee825c0045ca0d34f837d5851b81aacb, type: 2}
+  - {fileID: 11400000, guid: ee825c0045ca0d34f837d5851b81aacb, type: 2}
   audioSource: {fileID: 1588543137}
   playerScript: {fileID: 0}
   cleared: 0

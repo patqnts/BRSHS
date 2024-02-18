@@ -13,4 +13,5 @@ public class PlayerData
     public bool ClearBroom;
     public bool ClearSeg;
     public bool ClearPick;
+    public bool ClearFan;
 }

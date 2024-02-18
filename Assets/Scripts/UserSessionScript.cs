@@ -19,6 +19,7 @@ public class UserSessionScript : MonoBehaviour
     public bool clearBroom;
     public bool clearSeg;
     public bool clearPick;
+    public bool clearFan;
     public string selectedString;
 
     public bool isNewGame;
@@ -93,7 +94,8 @@ public class UserSessionScript : MonoBehaviour
             Coins = coins,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
-            ClearSeg = clearSeg,
+            ClearFan = clearFan,
+            ClearSeg = clearSeg
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
@@ -110,6 +112,7 @@ public class UserSessionScript : MonoBehaviour
             ClearBroom = clearBroom,
             ClearPick = clearPick,
             ClearSeg = clearSeg,
+            ClearFan = clearFan,
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
@@ -124,6 +127,7 @@ public class UserSessionScript : MonoBehaviour
         clearBroom = playerData.ClearBroom;
         clearSeg = playerData.ClearSeg;
         clearPick = playerData.ClearPick;
+        clearFan = playerData.ClearFan;
     }
 
     public void LoadPlayerDataFromFile(string fileName)

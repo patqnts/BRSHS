@@ -58,6 +58,7 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.clearPick = false;
         userSessionScript.clearBroom = false;
         userSessionScript.clearSeg = false;
+        userSessionScript.clearFan = false;
         userSessionScript.coins = 0;
 
         SceneManager.LoadScene("MainMenu");
@@ -71,6 +72,7 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.clearPick = playerScript.ClearPick;
         userSessionScript.clearBroom = playerScript.ClearBroom;
         userSessionScript.clearSeg = playerScript.ClearSeg;
+        userSessionScript.clearFan = playerScript.ClearFan;
         userSessionScript.coins = playerScript.Coins;
 
         userSessionScript.SavePlayerData();
@@ -84,6 +86,7 @@ public class MainGameScript : MonoBehaviour
         playerScript.ClearPick = userSessionScript.clearPick;
         playerScript.ClearBroom = userSessionScript.clearBroom;
         playerScript.ClearSeg = userSessionScript.clearSeg;
+        playerScript.ClearFan = userSessionScript.clearFan;
         playerScript.Coins = userSessionScript.coins;
 
         if (userSessionScript.isNewGame)

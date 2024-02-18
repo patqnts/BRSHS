@@ -1568,8 +1568,8 @@ MonoBehaviour:
   - {fileID: 7808453435280590128, guid: 7336c7ea65b167c4c8287a43b49d695a, type: 3}
   - {fileID: 7808453435280590128, guid: c1a749f152a274446acf77ed575f2a82, type: 3}
   - {fileID: 7808453435280590128, guid: de0343301195bc94cb9f7de97d6e3ad4, type: 3}
-  numberOfLeaves: 2
-  gameDuration: 20
+  numberOfLeaves: 25
+  gameDuration: 60
   timerText: {fileID: 840942350}
   startDialogBehaviour: {fileID: 288899556}
   dialogGraph: {fileID: 11400000, guid: 40fb92c6b08a5e143b8227dd4046fcb6, type: 2}
@@ -5218,7 +5218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &342328697
 RectTransform:
   m_ObjectHideFlags: 0

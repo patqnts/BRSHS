@@ -32,15 +32,15 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 278
-    y: 257
+    x: 61
+    y: 266
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
     characterName: 
-    text: 
+    text: You dont have enough coins
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 0}

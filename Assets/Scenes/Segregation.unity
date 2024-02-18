@@ -927,14 +927,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.4392157}
+  m_Color: {r: 0.9622642, g: 0.43120328, b: 0.96108335, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1106967042, guid: d24f888b7ef93d6499ff8eab3456342d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2739,7 +2739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   garbageName: {fileID: 310458262}
-  highScore: 1
+  highScore: 10
   currentScore: 0
   garbagePrefabs:
   - {fileID: 4930660141332983488, guid: 6a0301997a7271347a1fc925419c2f98, type: 3}
@@ -2755,7 +2755,7 @@ MonoBehaviour:
   scoreText: {fileID: 435590362}
   highScoreText: {fileID: 1736452936}
   timerText: {fileID: 2053559748}
-  gameDuration: 3
+  gameDuration: 60
   isStart: 0
   rewardUI: {fileID: 286378703}
   dialogBehaviour: {fileID: 65079168}

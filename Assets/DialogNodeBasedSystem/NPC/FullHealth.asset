@@ -37,10 +37,10 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: 
-    text: 
+    text: You are already full health.
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 0}

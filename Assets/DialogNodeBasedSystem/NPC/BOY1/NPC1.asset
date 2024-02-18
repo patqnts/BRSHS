@@ -16,8 +16,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 69
-    y: 176
+    x: 166
+    y: 660
     width: 170
     height: 115
   isDragging: 0
@@ -25,7 +25,7 @@ MonoBehaviour:
   sentence:
     characterName: B1
     text: Hello, can I ask for a favor
-    characterSprite: {fileID: 21300000, guid: 933d530e1ff06fc46b501c7201bff005, type: 3}
+    characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 1592011933179238529}
   sceneName: 
@@ -45,10 +45,10 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 483
-    y: 149
+    x: 580
+    y: 633
     width: 190
-    height: 135
+    height: 115
   isDragging: 0
   isSelected: 0
   answers:
@@ -95,8 +95,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 280
-    y: 156
+    x: 377
+    y: 640
     width: 170
     height: 115
   isDragging: 0
@@ -104,7 +104,7 @@ MonoBehaviour:
   sentence:
     characterName: B1
     text: Would you help me clean the room
-    characterSprite: {fileID: 21300000, guid: 933d530e1ff06fc46b501c7201bff005, type: 3}
+    characterSprite: {fileID: 0}
   parentNode: {fileID: -1629187235548436143}
   childNode: {fileID: -898487017026838237}
   sceneName: 
@@ -124,8 +124,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 720
-    y: 162
+    x: 817
+    y: 646
     width: 170
     height: 115
   isDragging: 0
@@ -153,8 +153,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 719
-    y: 285
+    x: 816
+    y: 769
     width: 170
     height: 115
   isDragging: 0

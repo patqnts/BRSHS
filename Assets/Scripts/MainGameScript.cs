@@ -1,3 +1,4 @@
+using cherrydev;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class MainGameScript : MonoBehaviour
     public UserSessionScript userSessionScript;
     public PlayerScript playerScript;
     public PlayerController playerController;
+
+    [SerializeField] private DialogBehaviour dialogBehaviour;
+    [SerializeField] private DialogNodeGraph[] dialogGraph;
 
     public GameObject intro;
     void Start()
@@ -22,23 +26,26 @@ public class MainGameScript : MonoBehaviour
     }
     public void BuyHealth()
     {
-        if (playerScript.CurrentHealth >= playerScript.MaxHealth)
-        {
-            //fullhealth already
-            return;
-        }
-
         if (playerScript.Coins < 20)
         {
             //not enough coins
+            dialogBehaviour.StartDialog(dialogGraph[1]);
             return;
         }
 
-        if (playerScript.Coins > 20)
+        if (playerScript.CurrentHealth >= playerScript.MaxHealth)
         {
-            playerScript.Coins -= 20;
+            dialogBehaviour.StartDialog(dialogGraph[0]);
+            return;
+        }
+
+        if (playerScript.Coins > 30)
+        {
+            playerScript.Coins -= 30;
             playerScript.CurrentHealth++;
             Save();
+            LoadPlayerData();
+            playerScript.LoadData();
         }
     }
     public void GoToMenu()

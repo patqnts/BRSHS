@@ -110,6 +110,7 @@ public class LeafGenerator : MonoBehaviour
     {
         Debug.Log("You won!");
         // Add your winning logic here
+        isStart = false;
         rewardUI.isWin = true;
         user.coins += 10;
         user.clearPick = true;

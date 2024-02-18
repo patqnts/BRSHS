@@ -18,6 +18,11 @@ public class PlayerScript : MonoBehaviour
 
     private void Start()
     {
+        LoadData();
+    }
+
+    public void LoadData()
+    {
         health.text = $"{CurrentHealth}/{MaxHealth}";
         coin.text = $"{Coins}";
     }

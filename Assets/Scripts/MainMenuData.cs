@@ -14,6 +14,8 @@ public class MainMenuData : MonoBehaviour
     public GridAutoAdjust grid;
     public string selectedSlot;
 
+    private List<GameObject> saveSlots = new List<GameObject>();
+
     void Start()
     {
         grid = FindObjectOfType<GridAutoAdjust>();
@@ -24,6 +26,13 @@ public class MainMenuData : MonoBehaviour
     // Display saved player data files using save slots
     void DisplaySavedPlayerDataFiles()
     {
+        // Clear existing save slots
+        foreach (var saveSlot in saveSlots)
+        {
+            Destroy(saveSlot);
+        }
+        saveSlots.Clear();
+
         string[] savedPlayerDataFiles = userSession.GetSavedPlayerDataFiles();
 
         foreach (string fileName in savedPlayerDataFiles)
@@ -41,7 +50,12 @@ public class MainMenuData : MonoBehaviour
             Button saveSlotButton = saveSlot.GetComponent<Button>();
             saveSlotButton.onClick.AddListener(() => LoadSelectedPlayerData(fileName));
 
+            // Add a delete button and its click event
+            Button deleteButton = saveSlot.transform.Find("DeleteButton").GetComponent<Button>();
+            deleteButton.onClick.AddListener(() => DeleteSaveFile(fileName, saveSlot));
+
             saveSlot.SetActive(true);
+            saveSlots.Add(saveSlot);
         }
         grid.AdjustGridLayout();
     }
@@ -50,6 +64,18 @@ public class MainMenuData : MonoBehaviour
     public void LoadSelectedPlayerData(string selectedFileName)
     {
         userSession.LoadPlayerDataFromFile(selectedFileName);
+    }
+
+    // Delete the selected save file and corresponding prefab
+    private void DeleteSaveFile(string fileName, GameObject saveSlot)
+    {
+        File.Delete(fileName);
+        // Remove the corresponding save slot prefab
+        saveSlots.Remove(saveSlot);
+        Destroy(saveSlot);
+
+        // Optionally, update the UI to reflect the changes after deletion
+        grid.AdjustGridLayout();
     }
 
     public void StartNewGame()

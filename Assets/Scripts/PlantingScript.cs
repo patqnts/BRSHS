@@ -8,7 +8,12 @@ public class PlantingScript : MonoBehaviour
     public PlayerScript player;
     public MainGameScript mainGameScript;
 
+    public PlantScript[] plants;
+    public int counter;
+
     public GameObject grow;
+
+    public bool isDone = false;
     void Start()
     {
         player = FindObjectOfType<PlayerScript>();
@@ -16,16 +21,32 @@ public class PlantingScript : MonoBehaviour
         CheckPlant();
     }
 
-    void CheckPlant()
+    public void CheckPlant()
     {
-        if (player.ClearFan)
+       
+        if(!isDone)
         {
-            grow.SetActive(true);
-        }
+            if (counter >= plants.Length)
+            {
+                player.ClearPlant = true;
+                mainGameScript.Save();
+                mainGameScript.LoadPlayerData();
+            }
+
+            if (player.ClearPlant)
+            {
+                grow.SetActive(true);
+                foreach (var plant in plants)
+                {
+                    plant.treeObject.SetActive(true);
+                }
+                isDone = true;
+            }
+        }      
     }
     public void GrowPlants()
     {
-        player.ClearFan = true;
+        player.ClearPlant = true;
         mainGameScript.Save();
         mainGameScript.LoadPlayerData();
         CheckPlant();

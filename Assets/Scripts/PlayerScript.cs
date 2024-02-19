@@ -16,6 +16,7 @@ public class PlayerScript : MonoBehaviour
     public bool ClearSeg;
     public bool ClearPick;
     public bool ClearFan;
+    public bool ClearPlant;
 
     private void Start()
     {

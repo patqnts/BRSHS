@@ -10,6 +10,7 @@ public class MainGameScript : MonoBehaviour
     public UserSessionScript userSessionScript;
     public PlayerScript playerScript;
     public PlayerController playerController;
+    public PlantingScript plantingScript;
 
     [SerializeField] private DialogBehaviour dialogBehaviour;
     [SerializeField] private DialogNodeGraph[] dialogGraph;
@@ -22,6 +23,7 @@ public class MainGameScript : MonoBehaviour
         userSessionScript = FindObjectOfType<UserSessionScript>();
         playerScript = FindObjectOfType<PlayerScript>();
         playerController = FindObjectOfType<PlayerController>();
+        plantingScript = FindObjectOfType<PlantingScript>();
 
 
         LoadPlayerData();
@@ -50,8 +52,39 @@ public class MainGameScript : MonoBehaviour
             playerScript.LoadData();
         }
     }
+
+    public bool PlantTree()
+    {
+        if (playerScript.Coins < 20)
+        {
+            //not enough coins
+            dialogBehaviour.StartDialog(dialogGraph[1]);
+            return false;
+        }
+
+        if (playerScript.Coins >= 20)
+        {
+            playerScript.Coins -= 20;
+            Save();
+            LoadPlayerData();
+            playerScript.LoadData();
+            return true;
+        }
+
+        return false;
+    }
     public void GoToMenu()
     {
+        if (!playerScript.ClearPlant)
+        {
+            for (int i = 0; i < plantingScript.plants.Length; i++)
+            {
+                if (plantingScript.plants[i].isPlanted)
+                {
+                    playerScript.Coins += 20;
+                }
+            }
+        }
         Save();
 
         userSessionScript.playerPos = new Vector2(0,0);
@@ -61,6 +94,7 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.clearBroom = false;
         userSessionScript.clearSeg = false;
         userSessionScript.clearFan = false;
+        userSessionScript.clearPlant = false;
         userSessionScript.coins = 0;
 
         SceneManager.LoadScene("MainMenu");
@@ -75,6 +109,10 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.clearBroom = playerScript.ClearBroom;
         userSessionScript.clearSeg = playerScript.ClearSeg;
         userSessionScript.clearFan = playerScript.ClearFan;
+        userSessionScript.clearPlant = playerScript.ClearPlant;
+
+        
+
         userSessionScript.coins = playerScript.Coins;
 
         userSessionScript.SavePlayerData();
@@ -89,11 +127,13 @@ public class MainGameScript : MonoBehaviour
         playerScript.ClearBroom = userSessionScript.clearBroom;
         playerScript.ClearSeg = userSessionScript.clearSeg;
         playerScript.ClearFan = userSessionScript.clearFan;
+        playerScript.ClearPlant = userSessionScript.clearPlant;
         playerScript.Coins = userSessionScript.coins;
 
         if(playerScript.ClearPick &&
            playerScript.ClearBroom &&
            playerScript.ClearSeg &&
+           playerScript.ClearPlant &&
            playerScript.ClearFan)
         {
             flourish.SetActive(true);

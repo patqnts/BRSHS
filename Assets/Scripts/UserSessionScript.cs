@@ -20,6 +20,7 @@ public class UserSessionScript : MonoBehaviour
     public bool clearSeg;
     public bool clearPick;
     public bool clearFan;
+    public bool clearPlant;
     public string selectedString;
 
     public bool isNewGame;
@@ -95,7 +96,8 @@ public class UserSessionScript : MonoBehaviour
             ClearBroom = clearBroom,
             ClearPick = clearPick,
             ClearFan = clearFan,
-            ClearSeg = clearSeg
+            ClearSeg = clearSeg,
+            ClearPlant = clearPlant
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
@@ -113,6 +115,7 @@ public class UserSessionScript : MonoBehaviour
             ClearPick = clearPick,
             ClearSeg = clearSeg,
             ClearFan = clearFan,
+            ClearPlant = clearPlant
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
@@ -128,6 +131,7 @@ public class UserSessionScript : MonoBehaviour
         clearSeg = playerData.ClearSeg;
         clearPick = playerData.ClearPick;
         clearFan = playerData.ClearFan;
+        clearPlant = playerData.ClearPlant;
     }
 
     public void LoadPlayerDataFromFile(string fileName)

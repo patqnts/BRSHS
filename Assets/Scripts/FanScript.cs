@@ -27,6 +27,7 @@ public class FanScript : MonoBehaviour
     {
         player.ClearFan = true;
         mainGameScript.Save();
+        mainGameScript.LoadPlayerData();
         CheckFan();
     }
 }

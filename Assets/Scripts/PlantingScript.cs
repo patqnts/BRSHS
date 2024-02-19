@@ -27,6 +27,7 @@ public class PlantingScript : MonoBehaviour
     {
         player.ClearFan = true;
         mainGameScript.Save();
+        mainGameScript.LoadPlayerData();
         CheckPlant();
     }
 }

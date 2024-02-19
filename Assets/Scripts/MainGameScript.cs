@@ -15,6 +15,8 @@ public class MainGameScript : MonoBehaviour
     [SerializeField] private DialogNodeGraph[] dialogGraph;
 
     public GameObject intro;
+    public GameObject flourish;
+
     void Start()
     {
         userSessionScript = FindObjectOfType<UserSessionScript>();
@@ -77,7 +79,7 @@ public class MainGameScript : MonoBehaviour
 
         userSessionScript.SavePlayerData();
     }
-    void LoadPlayerData()
+    public void LoadPlayerData()
     {
         playerController.transform.position = userSessionScript.playerPos;
 
@@ -88,6 +90,14 @@ public class MainGameScript : MonoBehaviour
         playerScript.ClearSeg = userSessionScript.clearSeg;
         playerScript.ClearFan = userSessionScript.clearFan;
         playerScript.Coins = userSessionScript.coins;
+
+        if(playerScript.ClearPick &&
+           playerScript.ClearBroom &&
+           playerScript.ClearSeg &&
+           playerScript.ClearFan)
+        {
+            flourish.SetActive(true);
+        }
 
         if (userSessionScript.isNewGame)
         {

@@ -38,9 +38,9 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
-    characterName: B1
+    characterName: Forest
     text: Look its all cleaned up.
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
@@ -62,14 +62,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 143
+    x: 144
     y: 330
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
-    characterName: B1
+    characterName: Forest
     text: You are such a life saver!
     characterSprite: {fileID: 0}
   parentNode: {fileID: 776543591700253261}

@@ -16,12 +16,12 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 59
-    y: 67
+    x: 91
+    y: 68
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
     characterName: Student
     text: 'Hey, did you know that plastic bottles like the one you''re holding are
@@ -68,10 +68,11 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: 
-    text: 
+    text: Recycling them helps reduce waste and conserve resources. Be sure to toss
+      it in the recycling bin
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 0}

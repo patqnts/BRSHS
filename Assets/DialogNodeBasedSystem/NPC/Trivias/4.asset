@@ -38,12 +38,13 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: 
-    text: 
+    text: Biodiversity weaves this beautiful web of life where everything has a purpose,
+      creating a masterpiece of balance.
     characterSprite: {fileID: 0}
-  parentNode: {fileID: 0}
+  parentNode: {fileID: 6993311737391644788}
   childNode: {fileID: 0}
   sceneName: 
 --- !u!114 &6993311737391644788
@@ -67,11 +68,11 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: Student
     text: Nature is like a giant puzzle, and each species is a unique piece
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
-  childNode: {fileID: 0}
+  childNode: {fileID: 5713447891564998783}
   sceneName: 

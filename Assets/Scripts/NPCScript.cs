@@ -11,6 +11,7 @@ public class NPCScript : MonoBehaviour
 
     [SerializeField] public AudioSource audioSource;
 
+    public GameObject exclamation;
     public PlayerScript playerScript;
 
     public bool cleared;
@@ -21,7 +22,10 @@ public class NPCScript : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if(exclamation != null)
+        {
+            exclamation.SetActive(true);
+        }
         
         if (collision.gameObject.tag == "Player")
         {
@@ -41,6 +45,14 @@ public class NPCScript : MonoBehaviour
                 dialogBehaviour[0].StartDialog(dialogGraph[0]);
             }
             
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (exclamation != null)
+        {
+            exclamation.SetActive(false);
         }
     }
     public void EnterChallenge(string sceneName)

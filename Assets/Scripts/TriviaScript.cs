@@ -10,14 +10,27 @@ public class TriviaScript : MonoBehaviour
 
     [SerializeField] public AudioSource audioSource;
 
+    public GameObject questionMark;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
+        if(questionMark != null)
+        {
+            questionMark.SetActive(true);
+        }
 
         if (collision.gameObject.tag == "Player")
         {
             audioSource.Play();
             dialogBehaviour.StartDialog(dialogGraph[Random.Range(0,dialogGraph.Length)]);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (questionMark != null)
+        {
+            questionMark.SetActive(false);
         }
     }
 }

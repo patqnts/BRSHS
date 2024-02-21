@@ -25,7 +25,7 @@ MonoBehaviour:
   sentence:
     characterName: 
     text: The more diverse, the stronger and more resilient the ecosystem becomes,
-      ready to face any challenge!
+      ready to face any challenge.
     characterSprite: {fileID: 0}
   parentNode: {fileID: 5377854302977108501}
   childNode: {fileID: 0}
@@ -69,10 +69,10 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
     characterName: 
-    text: erheroes?now that a biodiverse environment is like having a team of superheroes?
+    text: Did you know that a biodiverse environment is like having a team of superheroes?
     characterSprite: {fileID: 0}
   parentNode: {fileID: 7516463851346961418}
   childNode: {fileID: -7767730539826940389}

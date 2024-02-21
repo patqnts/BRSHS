@@ -24,9 +24,9 @@ MonoBehaviour:
   isSelected: 0
   sentence:
     characterName: 
-    text: 
+    text: But they're non-biodegradable
     characterSprite: {fileID: 0}
-  parentNode: {fileID: 0}
+  parentNode: {fileID: -4736660800284631687}
   childNode: {fileID: 0}
   sceneName: 
 --- !u!114 &-4736660800284631687
@@ -50,13 +50,13 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: Student
     text: Glass bottles may seem sturdy
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
-  childNode: {fileID: 0}
+  childNode: {fileID: -8914538619752588870}
   sceneName: 
 --- !u!114 &11400000
 MonoBehaviour:

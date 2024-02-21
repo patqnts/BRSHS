@@ -21,10 +21,10 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: 
-    text: But they're non-biodegradable
+    text: But they're non-biodegradable.
     characterSprite: {fileID: 0}
   parentNode: {fileID: -4736660800284631687}
   childNode: {fileID: 0}

@@ -21,13 +21,13 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: 
     text: 'The plants and animals around us might hold the key to curing diseases! '
     characterSprite: {fileID: 0}
   parentNode: {fileID: -1593959974753059057}
-  childNode: {fileID: 0}
+  childNode: {fileID: -2289333737532037513}
   sceneName: 
 --- !u!114 &-2289333737532037513
 MonoBehaviour:
@@ -50,12 +50,13 @@ MonoBehaviour:
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 0
+  isSelected: 1
   sentence:
     characterName: 
-    text: 
+    text: Nature is like a pharmacy, and biodiversity is the recipe book for life-saving
+      medicines.
     characterSprite: {fileID: 0}
-  parentNode: {fileID: 0}
+  parentNode: {fileID: -5289869073371003514}
   childNode: {fileID: 0}
   sceneName: 
 --- !u!114 &-1593959974753059057

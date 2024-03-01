@@ -44,6 +44,7 @@ public class SegregateGame : MonoBehaviour
     void Start()
     {
         user = FindObjectOfType<UserSessionScript>();
+        
         dialogBehaviour.StartDialog(dialogGraph);
     }
 
@@ -72,6 +73,7 @@ public class SegregateGame : MonoBehaviour
     void StartGame()
     {
         isStart = true;
+        highScore = PlayerPrefs.GetInt("HighScore", 0);
         highScoreText.text = $"High score: {highScore}";
         timer = gameDuration;
         UpdateTimerDisplay();
@@ -160,11 +162,13 @@ public class SegregateGame : MonoBehaviour
 
     void EndGame()
     {
-        // Check if the current score is higher than the high score
         if (currentScore > highScore)
         {
             // Call the function for winning
             WinGame();
+
+            // Save the new high score to PlayerPrefs
+            PlayerPrefs.SetInt("HighScore", currentScore);
         }
         else
         {

@@ -11,10 +11,15 @@ public class MainMenuData : MonoBehaviour
     public UserSessionScript userSession;
     public GameObject saveSlotPrefab; // Prefab for the save slot
     public Transform parent;
+    public Transform canvasTransform;
     public GridAutoAdjust grid;
     public string selectedSlot;
 
     private List<GameObject> saveSlots = new List<GameObject>();
+
+    public GameObject renameUIPrefab;
+
+    private GameObject currentRenameUI;
 
     void Start()
     {
@@ -53,6 +58,10 @@ public class MainMenuData : MonoBehaviour
             // Add a delete button and its click event
             Button deleteButton = saveSlot.transform.Find("DeleteButton").GetComponent<Button>();
             deleteButton.onClick.AddListener(() => DeleteSaveFile(fileName, saveSlot));
+
+
+            Button renameButton = saveSlot.transform.Find("RenameButton").GetComponent<Button>();
+            renameButton.onClick.AddListener(() => OpenRenameUI(fileName));
 
             saveSlot.SetActive(true);
             saveSlots.Add(saveSlot);
@@ -112,5 +121,44 @@ public class MainMenuData : MonoBehaviour
 
         // Increment the maximum save number to get the next available number
         return maxSaveNumber + 1;
+    }
+ 
+
+    private void OpenRenameUI(string oldFileName)
+    {
+        // Instantiate the rename UI prefab
+        currentRenameUI = Instantiate(renameUIPrefab, canvasTransform);
+
+        // Get the InputField and ConfirmButton components
+        InputField inputField = currentRenameUI.GetComponentInChildren<InputField>();
+        Button confirmButton = currentRenameUI.transform.Find("ConfirmButton").GetComponent<Button>();
+
+        // Add a listener to the ConfirmButton for renaming
+        confirmButton.onClick.AddListener(() => ConfirmRename(oldFileName, inputField));
+        currentRenameUI.SetActive(true);
+
+    }
+
+    // Method to confirm the renaming process
+    private void ConfirmRename(string oldFileName, InputField inputField)
+    {
+        string newName = inputField.text;
+
+        // Validate the new name (you can add your own validation logic)
+
+        // Rename the file
+        string directory = Path.GetDirectoryName(oldFileName);
+        string newFileName = Path.Combine(directory, newName + ".json");
+        File.Move(oldFileName, newFileName);
+
+        // Destroy the rename UI and refresh the display
+        Destroy(currentRenameUI);
+        DisplaySavedPlayerDataFiles();
+    }
+
+
+    public void ExitGame()
+    {
+        Application.Quit();
     }
 }

@@ -3111,6 +3111,7 @@ MonoBehaviour:
   timerText: {fileID: 2053559748}
   gameDuration: 60
   isStart: 0
+  coinText: {fileID: 1170859661}
   rewardUI: {fileID: 286378703}
   dialogBehaviour: {fileID: 65079168}
   dialogGraph: {fileID: 11400000, guid: 19f9997b63d202f4b9a39ccf6c360511, type: 2}

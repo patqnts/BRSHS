@@ -29,6 +29,9 @@ public class SegregateGame : MonoBehaviour
     private float timer;
     public bool isStart;
 
+    private int coinsReward = 1;
+    public Text coinText;
+
     public RewardUI rewardUI;
 
     [SerializeField] private DialogBehaviour dialogBehaviour;
@@ -88,6 +91,11 @@ public class SegregateGame : MonoBehaviour
     public void AddScore()
     {
         currentScore++;
+        timer += 2f;
+        if (currentScore % 10 == 0)
+        {
+            coinsReward++;
+        }
         scoreText.text = $"Score: {currentScore}";
     }
 
@@ -182,7 +190,9 @@ public class SegregateGame : MonoBehaviour
         //OriginalReward();
         rewardUI.isWin = true;
         isStart = false;
-        user.coins += 10;
+        int reward = 10 + (coinsReward * 5);
+        user.coins += reward;
+        coinText.text = reward.ToString();
         user.clearSeg = true;
         user.SavePlayerData(); //save
         vinishBehaviour.StartDialog(winGraph);

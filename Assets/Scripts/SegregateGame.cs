@@ -76,7 +76,7 @@ public class SegregateGame : MonoBehaviour
     void StartGame()
     {
         isStart = true;
-        highScore = PlayerPrefs.GetInt("HighScore", 0);
+        highScore = user.segregateHighscore;
         highScoreText.text = $"High score: {highScore}";
         timer = gameDuration;
         UpdateTimerDisplay();
@@ -174,9 +174,9 @@ public class SegregateGame : MonoBehaviour
         {
             // Call the function for winning
             WinGame();
-
-            // Save the new high score to PlayerPrefs
-            PlayerPrefs.SetInt("HighScore", currentScore);
+            user.segregateHighscore = currentScore;
+            //// Save the new high score to PlayerPrefs
+            //PlayerPrefs.SetInt("HighScore", currentScore);
         }
         else
         {
@@ -192,6 +192,7 @@ public class SegregateGame : MonoBehaviour
         isStart = false;
         int reward = 10 + (coinsReward * 5);
         user.coins += reward;
+        user.segregateHighscore = highScore;
         coinText.text = reward.ToString();
         user.clearSeg = true;
         user.SavePlayerData(); //save

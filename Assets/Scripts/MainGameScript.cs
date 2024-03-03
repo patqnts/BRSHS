@@ -43,7 +43,7 @@ public class MainGameScript : MonoBehaviour
             return;
         }
 
-        if (playerScript.Coins > 30)
+        if (playerScript.Coins >= 30)
         {
             playerScript.Coins -= 30;
             playerScript.CurrentHealth++;

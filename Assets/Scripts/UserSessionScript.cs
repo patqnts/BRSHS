@@ -15,6 +15,7 @@ public class UserSessionScript : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public int coins;
+    public int segregateHighscore;
     public Vector2 playerPos;
     public bool clearBroom;
     public bool clearSeg;
@@ -93,6 +94,7 @@ public class UserSessionScript : MonoBehaviour
             CurrentHealth = currentHealth,
             PlayerPos = playerPos,
             Coins = coins,
+            SegregateHighScore = segregateHighscore,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
             ClearFan = clearFan,
@@ -111,6 +113,7 @@ public class UserSessionScript : MonoBehaviour
             CurrentHealth = 3,
             PlayerPos = new Vector2(11.48f, -7.5754f),
             Coins = 0,
+            SegregateHighScore = 0,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
             ClearSeg = clearSeg,
@@ -126,6 +129,7 @@ public class UserSessionScript : MonoBehaviour
         maxHealth = playerData.MaxHealth;
         currentHealth = playerData.CurrentHealth;
         coins = playerData.Coins;
+        segregateHighscore = playerData.SegregateHighScore;
         playerPos = playerData.PlayerPos;
         clearBroom = playerData.ClearBroom;
         clearSeg = playerData.ClearSeg;

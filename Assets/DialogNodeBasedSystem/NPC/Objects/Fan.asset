@@ -16,12 +16,12 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 153
-    y: 236
+    x: 2
+    y: 251
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
     characterName: 
     text: Make sure that the fan is turned off or any appliances.
@@ -62,15 +62,15 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 357
-    y: 241
+    x: 206
+    y: 256
     width: 170
     height: 115
   isDragging: 0
   isSelected: 1
   sentence:
     characterName: 
-    text: To conserve electrcity
+    text: To conserve electricity.
     characterSprite: {fileID: 0}
   parentNode: {fileID: -3852170271794441139}
   childNode: {fileID: 0}

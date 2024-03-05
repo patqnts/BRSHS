@@ -16,8 +16,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 373
-    y: 276
+    x: 259
+    y: 303
     width: 170
     height: 115
   isDragging: 0
@@ -45,15 +45,15 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 178
-    y: 224
+    x: 64
+    y: 251
     width: 170
     height: 115
   isDragging: 0
   isSelected: 1
   sentence:
     characterName: Megatron
-    text: Moew!
+    text: Meow!
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}
   childNode: {fileID: 0}

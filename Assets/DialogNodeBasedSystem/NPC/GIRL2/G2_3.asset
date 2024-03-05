@@ -16,8 +16,8 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 343
-    y: 466
+    x: 342
+    y: 341
     width: 170
     height: 115
   isDragging: 0
@@ -63,14 +63,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 307
-    y: 300
+    x: 306
+    y: 175
     width: 170
     height: 115
   isDragging: 0
-  isSelected: 1
+  isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: Here's some reward for you!
     characterSprite: {fileID: 0}
   parentNode: {fileID: 4786051088477659401}
@@ -92,14 +92,14 @@ MonoBehaviour:
   nodeGraph: {fileID: 11400000}
   rect:
     serializedVersion: 2
-    x: 107
-    y: 294
+    x: 106
+    y: 169
     width: 170
     height: 115
   isDragging: 0
   isSelected: 0
   sentence:
-    characterName: G2
+    characterName: Fleur
     text: You are very good at this!
     characterSprite: {fileID: 0}
   parentNode: {fileID: 0}

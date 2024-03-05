@@ -15,10 +15,13 @@ public class UserSessionScript : MonoBehaviour
     public int maxHealth;
     public int currentHealth;
     public int coins;
+    public int segregateHighscore;
     public Vector2 playerPos;
     public bool clearBroom;
     public bool clearSeg;
     public bool clearPick;
+    public bool clearFan;
+    public bool clearPlant;
     public string selectedString;
 
     public bool isNewGame;
@@ -91,9 +94,12 @@ public class UserSessionScript : MonoBehaviour
             CurrentHealth = currentHealth,
             PlayerPos = playerPos,
             Coins = coins,
+            SegregateHighScore = segregateHighscore,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
+            ClearFan = clearFan,
             ClearSeg = clearSeg,
+            ClearPlant = clearPlant
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
@@ -107,9 +113,12 @@ public class UserSessionScript : MonoBehaviour
             CurrentHealth = 3,
             PlayerPos = new Vector2(11.48f, -7.5754f),
             Coins = 0,
+            SegregateHighScore = 0,
             ClearBroom = clearBroom,
             ClearPick = clearPick,
             ClearSeg = clearSeg,
+            ClearFan = clearFan,
+            ClearPlant = clearPlant
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
@@ -120,10 +129,13 @@ public class UserSessionScript : MonoBehaviour
         maxHealth = playerData.MaxHealth;
         currentHealth = playerData.CurrentHealth;
         coins = playerData.Coins;
+        segregateHighscore = playerData.SegregateHighScore;
         playerPos = playerData.PlayerPos;
         clearBroom = playerData.ClearBroom;
         clearSeg = playerData.ClearSeg;
         clearPick = playerData.ClearPick;
+        clearFan = playerData.ClearFan;
+        clearPlant = playerData.ClearPlant;
     }
 
     public void LoadPlayerDataFromFile(string fileName)

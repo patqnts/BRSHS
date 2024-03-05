@@ -29,6 +29,9 @@ public class SegregateGame : MonoBehaviour
     private float timer;
     public bool isStart;
 
+    private int coinsReward = 1;
+    public Text coinText;
+
     public RewardUI rewardUI;
 
     [SerializeField] private DialogBehaviour dialogBehaviour;
@@ -40,11 +43,11 @@ public class SegregateGame : MonoBehaviour
     [SerializeField] private DialogNodeGraph loseGraph;
     // Start is called before the first frame update
 
-    
     public UserSessionScript user;
     void Start()
     {
         user = FindObjectOfType<UserSessionScript>();
+        
         dialogBehaviour.StartDialog(dialogGraph);
     }
 
@@ -73,6 +76,7 @@ public class SegregateGame : MonoBehaviour
     void StartGame()
     {
         isStart = true;
+        highScore = user.segregateHighscore;
         highScoreText.text = $"High score: {highScore}";
         timer = gameDuration;
         UpdateTimerDisplay();
@@ -87,6 +91,11 @@ public class SegregateGame : MonoBehaviour
     public void AddScore()
     {
         currentScore++;
+        timer += 2f;
+        if (currentScore % 10 == 0)
+        {
+            coinsReward++;
+        }
         scoreText.text = $"Score: {currentScore}";
     }
 
@@ -161,11 +170,13 @@ public class SegregateGame : MonoBehaviour
 
     void EndGame()
     {
-        // Check if the current score is higher than the high score
         if (currentScore > highScore)
         {
             // Call the function for winning
             WinGame();
+            user.segregateHighscore = currentScore;
+            //// Save the new high score to PlayerPrefs
+            //PlayerPrefs.SetInt("HighScore", currentScore);
         }
         else
         {
@@ -179,7 +190,10 @@ public class SegregateGame : MonoBehaviour
         //OriginalReward();
         rewardUI.isWin = true;
         isStart = false;
-        user.coins += 10;
+        int reward = 10 + (coinsReward * 5);
+        user.coins += reward;
+        user.segregateHighscore = highScore;
+        coinText.text = reward.ToString();
         user.clearSeg = true;
         user.SavePlayerData(); //save
         vinishBehaviour.StartDialog(winGraph);

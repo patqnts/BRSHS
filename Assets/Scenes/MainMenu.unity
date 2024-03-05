@@ -2336,6 +2336,7 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   coins: 0
+  segregateHighscore: 0
   playerPos: {x: 0, y: 0}
   clearBroom: 0
   clearSeg: 0

@@ -9,10 +9,14 @@ public class PlayerController : MonoBehaviour
     private Vector2 movementInput;
     private Animator animator;
     public CircleCollider2D circleCollider;
+    public BoxCollider2D attackCollider;
     private Rigidbody2D rb;
     private bool isAttacking = false;
+
+    public static PlayerController instance;
     private void Start()
     {
+        instance = this;
         joystick = FindObjectOfType<FixedJoystick>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -54,13 +58,22 @@ public class PlayerController : MonoBehaviour
             rb.velocity = Vector2.zero;
         }
     }
-
+    public void Hurt(int damage, Vector2 direction, float knockbackForce)
+    {
+        rb.AddForce(direction * knockbackForce, ForceMode2D.Impulse);
+        animator.Play("hurt");     
+    }
     public void AttackButton()
     {
         if(!isAttacking)
         {
             Attack();
         }
+    }
+
+    public void Death()
+    {
+        animator.Play("death");
     }
 
     private void UpdateAnimatorParameters(Vector2 movement)
@@ -84,7 +97,6 @@ public class PlayerController : MonoBehaviour
     private IEnumerator Attack()
     {
         isAttacking = true;
-
         Vector2 attackDirection = new Vector2(animator.GetFloat("x"), animator.GetFloat("y"));
 
         // Determine the direction of the attack and play the corresponding animation

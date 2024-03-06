@@ -27,7 +27,7 @@ public class NPCScript : MonoBehaviour
             exclamation.SetActive(true);
         }
         
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Interact")
         {
             audioSource.Play();
             if (playerScript.CurrentHealth <= 0)

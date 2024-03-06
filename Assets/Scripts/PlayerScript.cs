@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerScript : MonoBehaviour
+public class PlayerScript : MonoBehaviour, IDamageable
 {
+    public Collider2D Collider2D;
+    public PlayerController Controller;
     public Text health;
     public Text coin;
 
@@ -30,4 +32,27 @@ public class PlayerScript : MonoBehaviour
         coin.text = $"{Coins}";
     }
 
+    public void TakeDamage(int damage, Vector2 direction, float knockbackForce)
+    {
+        if (CurrentHealth > 0)
+        {
+            CurrentHealth -= damage;
+            PlayerController.instance.Hurt(damage, direction, knockbackForce);
+            if (CurrentHealth <= 0)
+            {
+                PlayerController.instance.Death();
+            }
+            LoadData();
+        }
+    }
+
+    public void Death()
+    {
+        Debug.Log("Death");
+    }
+
+    public void Attack(int damage)
+    {
+        throw new System.NotImplementedException();
+    }
 }

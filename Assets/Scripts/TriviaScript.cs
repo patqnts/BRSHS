@@ -19,7 +19,7 @@ public class TriviaScript : MonoBehaviour
             questionMark.SetActive(true);
         }
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Interact")
         {
             audioSource.Play();
             dialogBehaviour.StartDialog(dialogGraph[Random.Range(0,dialogGraph.Length)]);

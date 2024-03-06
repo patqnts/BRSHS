@@ -10,6 +10,8 @@ TagManager:
   - Non
   - Leaf
   - Vision
+  - Enemy
+  - Interact
   layers:
   - Default
   - TransparentFX

@@ -15,3 +15,4 @@ public class GarbageScript : MonoBehaviour
         game.InstantiateRandomGarbage();
     }
 }
+//test update

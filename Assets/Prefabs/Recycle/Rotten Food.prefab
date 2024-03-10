@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6581257529187512610}
   - component: {fileID: 582131346072044427}
   - component: {fileID: 1048456031592575718}
+  - component: {fileID: 3344194476635858909}
   m_Layer: 0
   m_Name: Rotten Food
   m_TagString: Bio
@@ -148,3 +149,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &3344194476635858909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823588381068227168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09bbb06a13b3149842c9375066b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

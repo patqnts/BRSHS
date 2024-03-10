@@ -14,7 +14,7 @@ public class SegregateGame : MonoBehaviour
     [SerializeField]
     private int currentScore;
     public GameObject[] garbagePrefabs;
-    private GameObject currentGarbage;
+    public GameObject currentGarbage;
     private bool canMove = true;
     private bool movingRight = true;
     public float speed = 5f;
@@ -155,13 +155,11 @@ public class SegregateGame : MonoBehaviour
                 rb.gravityScale = 1.5f; 
             }
 
-            Destroy(currentGarbage, 2f);
-
-            InstantiateRandomGarbage();
+            Destroy(currentGarbage, 2f);          
         }
     }
 
-    void InstantiateRandomGarbage()
+    public void InstantiateRandomGarbage()
     {
         canMove = true;
         int randomIndex = Random.Range(0, garbagePrefabs.Length);

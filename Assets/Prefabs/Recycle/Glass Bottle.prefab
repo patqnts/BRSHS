@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7270575041396278600}
   - component: {fileID: 4574828701038925602}
   - component: {fileID: 5130881972314756371}
+  - component: {fileID: -6876090682889195058}
   m_Layer: 0
   m_Name: Glass Bottle
   m_TagString: Non
@@ -148,3 +149,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.25
+--- !u!114 &-6876090682889195058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4930660141332983488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b09bbb06a13b3149842c9375066b17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

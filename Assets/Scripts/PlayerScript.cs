@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour
     public bool ClearFan;
     public bool ClearPlant;
 
+    public Transform PlayerPosition;
     private void Start()
     {
         LoadData();

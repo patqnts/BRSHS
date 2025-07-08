@@ -89,6 +89,7 @@ public class UserSessionScript : MonoBehaviour
     // Save player data to JSON
     public void SavePlayerData()
     {
+
         PlayerData currentPlayerData = new PlayerData()
         {
             MaxHealth = maxHealth,

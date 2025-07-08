@@ -85,8 +85,11 @@ public class MainGameScript : MonoBehaviour
                 }
             }
         }
+
         Save();
 
+
+        //SET TO DEFAULT TO HANDLE NEW SAVE
         userSessionScript.playerPos = new Vector2(0,0);
         userSessionScript.maxHealth = 3;
         userSessionScript.currentHealth = 3;
@@ -109,8 +112,8 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.clearSeg = playerScript.ClearSeg;
         userSessionScript.clearFan = playerScript.ClearFan;
         userSessionScript.clearPlant = playerScript.ClearPlant;
+        userSessionScript.playerPos = playerScript.PlayerPosition.transform.position;
 
-        
 
         userSessionScript.coins = playerScript.Coins;
 
@@ -143,5 +146,10 @@ public class MainGameScript : MonoBehaviour
             intro.SetActive(true);
             userSessionScript.isNewGame = false;
         }
+    }
+
+    public void LoadSceneByName(string name)
+    {
+        SceneManager.LoadScene(name);
     }
 }

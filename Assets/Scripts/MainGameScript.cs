@@ -102,7 +102,6 @@ public class MainGameScript : MonoBehaviour
 
     public void Save()
     {
-        userSessionScript.playerPos = playerController.transform.position;
         userSessionScript.maxHealth = playerScript.MaxHealth;
         userSessionScript.currentHealth = playerScript.CurrentHealth;
         userSessionScript.clearPick = playerScript.ClearPick;

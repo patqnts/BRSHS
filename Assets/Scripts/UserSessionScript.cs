@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class UserSessionScript : MonoBehaviour
 {
-
+    public GameObject NotifyUI;
 
     private float sessionStartTime;
     private bool notificationSent = false;
@@ -82,6 +82,7 @@ public class UserSessionScript : MonoBehaviour
 
     void NotifyGame(string message)
     {
+        NotifyUI.SetActive(true);
         Debug.Log(message);
     }
 

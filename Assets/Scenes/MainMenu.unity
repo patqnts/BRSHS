@@ -2333,9 +2333,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dddd554c125111249b5e69227165d0fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NotifyUI: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   coins: 0
+  segregateHighscore: 0
   playerPos: {x: 0, y: 0}
   clearBroom: 0
   clearSeg: 0

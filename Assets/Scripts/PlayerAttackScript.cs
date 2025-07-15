@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -60,44 +60,42 @@ public class PlayerAttackScript : MonoBehaviour
             ? playerController.lastMoveDir.normalized
             : Vector2.right;
 
-        // Detect hits
+        // Find targets
         Vector2 hitPoint = (Vector2)transform.position + attackDir * attackRange;
         Collider2D[] hits = Physics2D.OverlapCircleAll(hitPoint, 0.5f, enemyLayer);
 
-        // Compute lunge target position (fixed)
-        Vector3 targetPos = transform.position + (Vector3)(attackDir * lungeDistance);
-        transform.DOMove(targetPos, lungeDuration).SetEase(Ease.OutQuad);
-
-        // Wait mid-lunge
-        yield return new WaitForSeconds(lungeDuration * 0.5f);
-
         bool didHitAny = false;
 
-        foreach (var hit in hits)
+        if (hits.Length > 0)
         {
-            if (hit.TryGetComponent<IDamageable>(out var damageable))
-            {
-                damageable.OnHit(attackDamage);
-                didHitAny = true;
-            }
+            // Lunge only if hitting something
+            Vector3 targetPos = transform.position + (Vector3)(attackDir * lungeDistance);
+            transform.DOMove(targetPos, lungeDuration).SetEase(Ease.OutQuad);
 
-            if (hit.TryGetComponent<Rigidbody2D>(out var rb))
+            // Wait mid-lunge
+            yield return new WaitForSeconds(lungeDuration * 0.5f);
+
+            foreach (var hit in hits)
             {
-                rb.velocity = Vector2.zero;
-                rb.AddForce(attackDir * knockbackForce, ForceMode2D.Impulse);
+                if (hit.TryGetComponent<IDamageable>(out var damageable))
+                {
+                    damageable.OnHit(attackDamage, attackDir, knockbackForce); // ✔️ PASS direction & force
+                    didHitAny = true;
+                }
             }
         }
+        else
+        {
+            // No hit: no lunge
+            yield return new WaitForSeconds(lungeDuration * 0.5f);
+        }
 
-        // Apply hit stop if hit any
+        // HIT STOP if we hit anything
         if (didHitAny)
         {
             Time.timeScale = 0f;
             yield return new WaitForSecondsRealtime(hitStopDuration);
             Time.timeScale = 1f;
-        }
-        else
-        {
-            yield return new WaitForSeconds(lungeDuration * 0.5f);
         }
 
         yield return new WaitForSeconds(attackCooldown);
@@ -105,6 +103,8 @@ public class PlayerAttackScript : MonoBehaviour
         playerController.canMove = true;
         canAttack = true;
     }
+
+
 
 
 

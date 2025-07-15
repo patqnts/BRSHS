@@ -1,9 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 
 public class MonsterScript : MonoBehaviour, IDamageable
 {
+    public event System.Action<MonsterScript> OnMonsterDied;
+
     [Header("Sprites")]
     public Sprite[] images;
 
@@ -39,6 +41,7 @@ public class MonsterScript : MonoBehaviour, IDamageable
     public float attackRange = 1f;
     public float attackCooldown = 1.5f;
     public int attackDamage = 1;
+    private bool isStunned = false;
 
     private Transform player;
     private bool isAttacking = false;
@@ -60,6 +63,8 @@ public class MonsterScript : MonoBehaviour, IDamageable
     {
         if (player == null) return;
 
+        if (isStunned) return; // 🛑 do nothing while stunned
+
         float distance = Vector2.Distance(transform.position, player.position);
 
         if (distance <= attackRange)
@@ -75,6 +80,8 @@ public class MonsterScript : MonoBehaviour, IDamageable
             Idle();
         }
     }
+
+
     private void ClearTweens()
     {
         idleTween?.Kill();
@@ -138,7 +145,7 @@ public class MonsterScript : MonoBehaviour, IDamageable
         if (Vector2.Distance(transform.position, player.position) <= attackRange)
         {
             var damageable = player.GetComponent<IDamageable>();
-            damageable?.OnHit(attackDamage);
+            damageable?.OnHit(attackDamage,null,0);
         }
 
         StartCoroutine(AttackCooldownRoutine());
@@ -154,36 +161,36 @@ public class MonsterScript : MonoBehaviour, IDamageable
 
     #region Damage Handling
 
-    public void OnHit(int damage)
+    public void OnHit(int damage, Vector2? hitDir = null, float knockbackForce = 5f)
     {
         Health -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage. Remaining HP: {Health}");
 
-        // Punch scale for hit reaction
+        // Stun: stops chase/idle temporarily
+        isStunned = true;
+        DOVirtual.DelayedCall(0.2f, () => isStunned = false);
+
+        // Hit reaction visuals
         visual.DOPunchScale(Vector3.one * 0.2f, 0.2f, 5, 1);
+        visual.DOShakePosition(0.2f, 0.1f, 10, 90, false, true);
 
-        // Shake position slightly for impact effect
-        visual.DOShakePosition(
-            duration: 0.2f,     // how long to shake
-            strength: 0.1f,     // shake distance
-            vibrato: 10,        // how much it jitters
-            randomness: 90,     // random factor
-            snapping: false,
-            fadeOut: true
-        );
-
-        // Flash red
         if (spriteRenderer != null)
         {
             Color originalColor = spriteRenderer.color;
             spriteRenderer.color = Color.red;
-            DOVirtual.DelayedCall(0.1f, () =>
-            {
-                if (spriteRenderer != null)
-                    spriteRenderer.color = originalColor;
-            });
+            DOVirtual.DelayedCall(0.1f, () => spriteRenderer.color = originalColor);
+        }
+
+        // Knockback
+        if (hitDir != null && rb != null)
+        {
+            Vector2 dir = hitDir.Value.normalized;
+            rb.velocity = Vector2.zero;
+            rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
         }
     }
+
+
 
 
     public void OnHitWithKnockback(Rigidbody2D rb, int damage)
@@ -201,8 +208,45 @@ public class MonsterScript : MonoBehaviour, IDamageable
     public void OnDeath()
     {
         Debug.Log($"{gameObject.name} died.");
-        Destroy(gameObject);
+
+        // Notify spawner
+        OnMonsterDied?.Invoke(this);
+
+        // Disable further logic
+        enabled = false;
+
+        // Kill any running tweens
+        ClearTweens();
+
+        // Death FX: jump up + spin + fade
+        Sequence deathSeq = DOTween.Sequence();
+
+        // Jump up a bit
+        deathSeq.Join(transform.DOMoveY(transform.position.y + 1f, 0.5f).SetEase(Ease.OutQuad));
+
+        // Rotate spin
+        deathSeq.Join(visual.DORotate(new Vector3(0, 0, 360f), 0.5f, RotateMode.FastBeyond360).SetEase(Ease.InOutQuad));
+
+        // Fade out sprite
+        if (spriteRenderer != null)
+        {
+            deathSeq.Join(spriteRenderer.DOFade(0f, 0.5f));
+        }
+        else if (visual.TryGetComponent<SpriteRenderer>(out var visualSprite))
+        {
+            deathSeq.Join(visualSprite.DOFade(0f, 0.5f));
+        }
+
+        // Scale down slightly (optional)
+        deathSeq.Join(visual.DOScale(0.5f, 0.5f));
+
+        // Then destroy
+        deathSeq.OnComplete(() =>
+        {
+            Destroy(gameObject);
+        });
     }
+
 
     #endregion
 }

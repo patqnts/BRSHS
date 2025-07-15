@@ -491,6 +491,12 @@ MonoBehaviour:
   attackCooldown: 0.25
   lungeDistance: 0.5
   lungeDuration: 0.1
+  attackRange: 0.8
+  enemyLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  attackDamage: 1
+  knockbackForce: 5
   hitStopDuration: 0.05
 --- !u!114 &6797666287062320403
 MonoBehaviour:

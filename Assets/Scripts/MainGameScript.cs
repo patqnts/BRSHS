@@ -30,18 +30,27 @@ public class MainGameScript : MonoBehaviour
     }
     public void BuyHealth()
     {
-        if (playerScript.Coins < 20)
-        {
-            //not enough coins
-            dialogBehaviour.StartDialog(dialogGraph[1]);
-            return;
-        }
+        PixelCrushers.DialogueSystem.DialogueLua.SetVariable("PlayerHealthIsMaxed", false);
+        PixelCrushers.DialogueSystem.DialogueLua.SetVariable("IsCoinEnough", true);
+
 
         if (playerScript.CurrentHealth >= playerScript.MaxHealth)
         {
-            dialogBehaviour.StartDialog(dialogGraph[0]);
+            //dialogBehaviour.StartDialog(dialogGraph[0]);
+            PixelCrushers.DialogueSystem.DialogueLua.SetVariable("PlayerHealthIsMaxed", true);
             return;
         }
+
+        if (playerScript.Coins < 30)
+        {
+            //not enough coins
+            //dialogBehaviour.StartDialog(dialogGraph[1]);
+            PixelCrushers.DialogueSystem.DialogueLua.SetVariable("IsCoinEnough", false);
+            return;
+        }
+
+
+
 
         if (playerScript.Coins >= 30)
         {
@@ -118,6 +127,8 @@ public class MainGameScript : MonoBehaviour
         userSessionScript.coins = playerScript.Coins;
 
         userSessionScript.SavePlayerData();
+
+        Debug.Log("SAVED");
     }
     public void LoadPlayerData()
     {

@@ -1,4 +1,5 @@
 using cherrydev;
+using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -67,7 +68,8 @@ public class MainGameScript : MonoBehaviour
         if (playerScript.Coins < 20)
         {
             //not enough coins
-            dialogBehaviour.StartDialog(dialogGraph[1]);
+            //dialogBehaviour.StartDialog(dialogGraph[1]);
+            DialogueManager.StartConversation("Not Enough Coins To Plant");
             return false;
         }
 

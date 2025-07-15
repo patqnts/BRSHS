@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 3457135722400711331}
   - component: {fileID: 4211145520236365060}
   - component: {fileID: 115434085344548666}
+  - component: {fileID: 8751690246331627123}
   - component: {fileID: 6797666287062320403}
   - component: {fileID: 2621462796598828023}
   m_Layer: 0
@@ -473,6 +474,24 @@ MonoBehaviour:
   moveSpeed: 3
   circleCollider: {fileID: 4211145520236365060}
   canMove: 1
+  lastMoveDir: {x: 0, y: 0}
+--- !u!114 &8751690246331627123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6346600128751402044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 347aa08a170573145955c8a61ede1c7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackButton: {fileID: 0}
+  attackCooldown: 0.25
+  lungeDistance: 0.5
+  lungeDuration: 0.1
+  hitStopDuration: 0.05
 --- !u!114 &6797666287062320403
 MonoBehaviour:
   m_ObjectHideFlags: 0

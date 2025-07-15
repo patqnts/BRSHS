@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Windows;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class PlayerController : MonoBehaviour
     public CircleCollider2D circleCollider;
     private Rigidbody2D rb;
     public bool canMove = true;
+    public Vector2 lastMoveDir;
 
     private void Start()
     {
@@ -23,6 +25,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if (movementInput != Vector2.zero)
+        {
+            lastMoveDir = movementInput.normalized;
+        }
         movementInput = new Vector2(joystick.Horizontal, joystick.Vertical);
     }
 

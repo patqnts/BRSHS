@@ -1,8 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Windows;
+
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,12 +23,25 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        // Read WASD input
+        Vector2 keyboardInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+        // Read joystick input
+        Vector2 joystickInput = new Vector2(joystick.Horizontal, joystick.Vertical);
+
+        // Combine both inputs, prioritizing keyboard if used
+        movementInput = joystickInput;
+
+        if (keyboardInput != Vector2.zero)
+            movementInput = keyboardInput;
+
+        // Update lastMoveDir only when there's movement
         if (movementInput != Vector2.zero)
         {
             lastMoveDir = movementInput.normalized;
         }
-        movementInput = new Vector2(joystick.Horizontal, joystick.Vertical);
     }
+
 
     private void FixedUpdate()
     {

@@ -77,12 +77,18 @@ public class PlayerAttackScript : MonoBehaviour
 
             foreach (var hit in hits)
             {
+                if (hit == null) continue; // Skip if the collider is destroyed
+
+                // Optional: check if the GameObject itself is null or destroyed
+                if (hit.gameObject == null) continue;
+
                 if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {
-                    damageable.OnHit(attackDamage, attackDir, knockbackForce); // ✔️ PASS direction & force
+                    damageable.OnHit(attackDamage, attackDir, knockbackForce);
                     didHitAny = true;
                 }
             }
+
         }
         else
         {

@@ -22,7 +22,7 @@ namespace MoreMountains.InventoryEngine
 		public override bool Equip(string playerID)
 		{
 			base.Equip(playerID);
-			TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetWeapon(WeaponSprite,this);
+			//TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetWeapon(WeaponSprite,this);
             return true;
 		}
 
@@ -32,7 +32,7 @@ namespace MoreMountains.InventoryEngine
 		public override bool UnEquip(string playerID)
 		{
 			base.UnEquip(playerID);
-			TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetWeapon(null,this);
+			//TargetInventory(playerID).TargetTransform.GetComponent<InventoryDemoCharacter>().SetWeapon(null,this);
             return true;
         }
 		

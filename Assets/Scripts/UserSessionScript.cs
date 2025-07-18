@@ -1,7 +1,9 @@
+using MoreMountains.InventoryEngine;
+using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using System.IO;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class UserSessionScript : MonoBehaviour
@@ -105,6 +107,10 @@ public class UserSessionScript : MonoBehaviour
         };
         string jsonData = JsonUtility.ToJson(currentPlayerData);
         File.WriteAllText(selectedString, jsonData);
+
+        MMEventManager.TriggerEvent(new MMGameEvent("Save"));
+        Debug.Log("Invetory saved " + Inventory._saveFolderName);
+
     }
 
     public void NewPlayerData()
@@ -145,6 +151,8 @@ public class UserSessionScript : MonoBehaviour
         selectedString = fileName;
         if (File.Exists(fileName))
         {
+            MMInventoryLoad(fileName);
+
             string jsonData = File.ReadAllText(fileName);
             PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(jsonData);
 
@@ -156,9 +164,31 @@ public class UserSessionScript : MonoBehaviour
             Debug.Log($"File not found: {fileName}");
             isNewGame = true;
             NewPlayerData();
+            MMInventorySave(fileName);
         }       
         SceneManager.LoadScene("MainGame");
     }
+
+    private void MMInventoryLoad(string fileName)
+    {
+        // Extract folder from the full path of the file
+        string folderName = Path.GetFileNameWithoutExtension(fileName);
+        Inventory._saveFolderName = folderName;
+        MMEventManager.TriggerEvent(new MMGameEvent("Load"));
+        Debug.Log("Invetory loaded "+ Inventory._saveFolderName);
+    }
+
+    private void MMInventorySave(string fileName)
+    {
+        // Extract folder from the full path of the file
+        string folderName = Path.GetFileNameWithoutExtension(fileName);
+        Inventory._saveFolderName = folderName;
+        MMEventManager.TriggerEvent(new MMGameEvent("Save"));
+        Debug.Log("Invetory saved " + Inventory._saveFolderName);
+
+    }
+
+
     private string GetSavePath()
     {
         return Path.Combine(Application.persistentDataPath, "playerData.json");

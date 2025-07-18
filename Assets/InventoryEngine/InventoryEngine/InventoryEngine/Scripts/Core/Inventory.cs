@@ -100,7 +100,7 @@ namespace MoreMountains.InventoryEngine
         }
 
         public const string _resourceItemPath = "Items/";
-        protected const string _saveFolderName = "InventoryEngine/";
+        public static string _saveFolderName = "InventoryEngine/";
         protected const string _saveFileExtension = ".inventory";
 
         /// <summary>

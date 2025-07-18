@@ -571,6 +571,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 223719970816591796, guid: 21bbf2e974b14e2468230a1da74b7a63, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 224012538122005186, guid: 21bbf2e974b14e2468230a1da74b7a63, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1562,6 +1566,10 @@ PrefabInstance:
     - target: {fileID: 224997763306074346, guid: 21bbf2e974b14e2468230a1da74b7a63, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4222086738000992181, guid: 21bbf2e974b14e2468230a1da74b7a63, type: 3}
+      propertyPath: m_CameraType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4222086738000992181, guid: 21bbf2e974b14e2468230a1da74b7a63, type: 3}
       propertyPath: m_RendererIndex

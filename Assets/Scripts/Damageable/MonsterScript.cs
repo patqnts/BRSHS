@@ -5,6 +5,7 @@ using System.Collections;
 public class MonsterScript : MonoBehaviour, IDamageable
 {
     public event System.Action<MonsterScript> OnMonsterDied;
+    public GameObject attackObject;
 
     [Header("Sprites")]
     public Sprite[] images;
@@ -144,8 +145,9 @@ public class MonsterScript : MonoBehaviour, IDamageable
 
         if (Vector2.Distance(transform.position, player.position) <= attackRange)
         {
-            var damageable = player.GetComponent<IDamageable>();
-            damageable?.OnHit(attackDamage,null,0);
+            //var damageable = player.GetComponent<IDamageable>();
+            //damageable?.OnHit(attackDamage,null,0);
+            attackObject.SetActive(true);
         }
 
         StartCoroutine(AttackCooldownRoutine());

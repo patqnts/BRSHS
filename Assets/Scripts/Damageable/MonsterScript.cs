@@ -134,40 +134,70 @@ public class MonsterScript : MonoBehaviour, IDamageable
     #endregion
 
     #region Attack
-
+    private Coroutine attackCoroutine;
     private void Attack()
     {
         if (isAttacking) return;
 
         isAttacking = true;
+        attackCoroutine = StartCoroutine(AttackRoutine());
+    }
 
-        transform.DOPunchScale(Vector3.one * 0.2f, 0.3f, 5, 1);
 
-        if (Vector2.Distance(transform.position, player.position) <= attackRange)
+
+    private IEnumerator AttackRoutine()
+    {
+        // 👀 Telegraph: scale up slightly and flash red
+        visual.DOScale(Vector3.one * 1.2f, 0.2f).SetEase(Ease.OutQuad);
+
+        if (spriteRenderer != null)
         {
-            //var damageable = player.GetComponent<IDamageable>();
-            //damageable?.OnHit(attackDamage,null,0);
-            attackObject.SetActive(true);
+            spriteRenderer.color = Color.yellow;
         }
 
-        StartCoroutine(AttackCooldownRoutine());
-    }
+        // Wait before attack triggers (player has this time to dodge)
+        yield return new WaitForSeconds(0.5f); // ← anticipation time
 
-    private IEnumerator AttackCooldownRoutine()
-    {
-        yield return new WaitForSeconds(attackCooldown);
+        // Restore color and scale before attack
+        visual.DOScale(Vector3.one, 0.1f);
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white;
+        }
+
+        // 👊 Attack animation (punch effect)
+        transform.DOPunchScale(Vector3.one * 0.2f, 0.3f, 5, 1);
+
+        // ✅ Activate hitbox
+        canDamage = true;
+        attackObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.3f); // hitbox active time
+
+        canDamage = false;
+        attackObject.SetActive(false);
+
+        yield return new WaitForSeconds(attackCooldown - 0.8f); // remaining cooldown
         isAttacking = false;
     }
+
+
 
     #endregion
 
     #region Damage Handling
-
+    private bool canDamage = false;
     public void OnHit(int damage, Vector2? hitDir = null, float knockbackForce = 5f)
     {
         Health -= damage;
         Debug.Log($"{gameObject.name} took {damage} damage. Remaining HP: {Health}");
 
+
+        // Interrupt attack if hit
+        if (isAttacking)
+        {
+            InterruptAttack();
+        }
         // Stun: stops chase/idle temporarily
         isStunned = true;
         DOVirtual.DelayedCall(0.2f, () => isStunned = false);
@@ -192,6 +222,29 @@ public class MonsterScript : MonoBehaviour, IDamageable
         }
     }
 
+    private void InterruptAttack()
+    {
+        if (attackCoroutine != null)
+        {
+            StopCoroutine(attackCoroutine);
+            attackCoroutine = null;
+        }
+
+        isAttacking = false;
+        canDamage = false;
+        attackObject.SetActive(false);
+
+        // Kill all tweens related to the attack
+        DOTween.Kill(visual);
+        DOTween.Kill(transform);
+
+        // Reset visuals (in case anticipation was active)
+        visual.localScale = Vector3.one;
+        if (spriteRenderer != null)
+        {
+            spriteRenderer.color = Color.white;
+        }
+    }
 
 
 

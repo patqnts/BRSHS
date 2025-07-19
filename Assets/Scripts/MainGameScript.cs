@@ -67,37 +67,23 @@ public class MainGameScript : MonoBehaviour
 
     public bool IncreaseHealth(int amount)
     {
-        if (playerScript.CurrentHealth >= playerScript.MaxHealth) // MAX HEALTH ALREADY
+        if (playerScript.CurrentHealth >= playerScript.MaxHealth)
         {
             playerScript.CurrentHealth = playerScript.MaxHealth;
-            Save();
-            LoadPlayerData();
-            playerScript.LoadData();
-           // Debug.Log("MAX HEALTH ALREADY");
+            ApplyPlayerData();
             return false;
         }
-        else
-        {
-            playerScript.CurrentHealth += amount;
 
-            if (playerScript.CurrentHealth > playerScript.MaxHealth)
-            {
-                playerScript.CurrentHealth = playerScript.MaxHealth;
-            }
-
-            Save();
-            LoadPlayerData();
-            playerScript.LoadData();
-            return true;
-        }
-
-        
+        playerScript.CurrentHealth = Mathf.Min(playerScript.CurrentHealth + amount, playerScript.MaxHealth);
+        ApplyPlayerData();
+        return true;
     }
 
     public void DecreaseHealth(int amount)
     {
         if (playerScript.CurrentHealth <= 0)
         {
+            YouDied();
             return;
         }
 
@@ -105,18 +91,27 @@ public class MainGameScript : MonoBehaviour
 
         if (playerScript.CurrentHealth <= 0)
         {
-            YouDied();
             playerScript.CurrentHealth = 0;
+            YouDied();
         }
 
+        Debug.Log("Player Hurt");
+        ApplyPlayerData();
+    }
+
+    private void ApplyPlayerData()
+    {
         Save();
         LoadPlayerData();
         playerScript.LoadData();
     }
 
+
     public void YouDied()
     {
         //SPAWN PLAYER AT THE START WITH 1 HP
+        playerController.transform.position = new Vector2(11.48f, -7.5754f);
+        IncreaseHealth(1);
     }
     public bool PlantTree()
     {

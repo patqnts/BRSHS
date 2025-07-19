@@ -13,7 +13,8 @@ public class MonsterAttackScript : MonoBehaviour
         {
             if(_sessionScript != null)
             {
-                _sessionScript.currentHealth--;
+                //_sessionScript.currentHealth--;
+                MainGameScript.instance.DecreaseHealth(1);
                 Debug.Log("Player Hurt");
                 this.gameObject.SetActive(false);
             }

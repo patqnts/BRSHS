@@ -12,21 +12,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4829572fcd2f98479c803ffaf809268, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  ItemID: Sword
+  ItemID: rust_sword
   TargetInventoryName: RogueMainInventory
+  ForceSlotIndex: 0
+  TargetIndex: 0
   Usable: 0
   Consumable: 1
   ConsumeQuantity: 1
   Equippable: 1
+  MoveWhenEquipped: 1
   Droppable: 0
   CanMoveObject: 1
   CanSwapObject: 1
   Quantity: 1
-  ItemName: Sword
-  ShortDescription: A sharp sword
-  Description: With its long blade and refined hilt, this sword can be used to cut
-    cakes and stuff.
-  Icon: {fileID: 21300006, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
+  ItemName: Rusty Sword
+  ShortDescription: A rusty sword
+  Description: 
+  Icon: {fileID: 21300000, guid: 39d8149acbf201d4b844e9c1dc9d01b6, type: 3}
   Prefab: {fileID: 170916, guid: 8e3b87501a6ef0246a7a5e8e2dc5e4f9, type: 3}
   DropProperties:
     Shape: 0
@@ -77,4 +79,4 @@ MonoBehaviour:
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
-  WeaponSprite: {fileID: 21300008, guid: 678058abcbfe36f42902c11d9e5f64fc, type: 3}
+  WeaponSprite: {fileID: 21300000, guid: 39d8149acbf201d4b844e9c1dc9d01b6, type: 3}

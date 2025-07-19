@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class MainGameScript : MonoBehaviour
 {
+    public static MainGameScript instance;
     // Start is called before the first frame update
     public UserSessionScript userSessionScript;
     public PlayerScript playerScript;
@@ -19,6 +20,10 @@ public class MainGameScript : MonoBehaviour
     public GameObject intro;
     public GameObject flourish;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     void Start()
     {
         userSessionScript = FindObjectOfType<UserSessionScript>();
@@ -56,13 +61,63 @@ public class MainGameScript : MonoBehaviour
         if (playerScript.Coins >= 30)
         {
             playerScript.Coins -= 30;
-            playerScript.CurrentHealth++;
-            Save();
-            LoadPlayerData();
-            playerScript.LoadData();
+            IncreaseHealth(1);
         }
     }
 
+    public bool IncreaseHealth(int amount)
+    {
+        if (playerScript.CurrentHealth >= playerScript.MaxHealth) // MAX HEALTH ALREADY
+        {
+            playerScript.CurrentHealth = playerScript.MaxHealth;
+            Save();
+            LoadPlayerData();
+            playerScript.LoadData();
+           // Debug.Log("MAX HEALTH ALREADY");
+            return false;
+        }
+        else
+        {
+            playerScript.CurrentHealth += amount;
+
+            if (playerScript.CurrentHealth > playerScript.MaxHealth)
+            {
+                playerScript.CurrentHealth = playerScript.MaxHealth;
+            }
+
+            Save();
+            LoadPlayerData();
+            playerScript.LoadData();
+            return true;
+        }
+
+        
+    }
+
+    public void DecreaseHealth(int amount)
+    {
+        if (playerScript.CurrentHealth <= 0)
+        {
+            return;
+        }
+
+        playerScript.CurrentHealth -= amount;
+
+        if (playerScript.CurrentHealth <= 0)
+        {
+            YouDied();
+            playerScript.CurrentHealth = 0;
+        }
+
+        Save();
+        LoadPlayerData();
+        playerScript.LoadData();
+    }
+
+    public void YouDied()
+    {
+        //SPAWN PLAYER AT THE START WITH 1 HP
+    }
     public bool PlantTree()
     {
         if (playerScript.Coins < 20)

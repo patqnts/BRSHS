@@ -31,7 +31,7 @@ MonoBehaviour:
 '
   Description: "In Norse mythology, the goddess I\xF0unn is portrayed as providing
     apples to the gods that give them eternal youthfulness"
-  Icon: {fileID: 21300000, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
+  Icon: {fileID: 21300000, guid: 5f3cca826fd9c00438e508bacc721ce9, type: 3}
   Prefab: {fileID: 180430, guid: 9656340f886d7124dbc67c8cd98349d6, type: 3}
   DropProperties:
     Shape: 0
@@ -82,4 +82,4 @@ MonoBehaviour:
   MovedSound: {fileID: 0}
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
-  HealthBonus: 5
+  HealthBonus: 1

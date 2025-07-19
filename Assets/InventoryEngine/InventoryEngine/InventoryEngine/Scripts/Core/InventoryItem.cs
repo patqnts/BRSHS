@@ -20,9 +20,10 @@ namespace MoreMountains.InventoryEngine
 		
 		/// the inventory name into which this item will be stored
 		public string TargetInventoryName = "MainInventory";
-
-		/// if this is true, the item won't be added anywhere's there's room in the inventory, but instead at the specified TargetIndex slot
-		public bool ForceSlotIndex = false;
+		[Header("Shop Settings")]
+		public int Price;
+        /// if this is true, the item won't be added anywhere's there's room in the inventory, but instead at the specified TargetIndex slot
+        public bool ForceSlotIndex = false;
 		/// if ForceSlotIndex is true, this is the index at which the item will be added in the target inventory
 		[MMCondition("ForceSlotIndex", true)]
 		public int TargetIndex = 0;

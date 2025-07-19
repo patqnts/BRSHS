@@ -3178,7 +3178,7 @@ MonoBehaviour:
         type: 0
         typeString: 
       - title: Dialogue Text
-        value: Would you like to buy health for 30 coins?
+        value: Would you like to see what's for sale?
         type: 0
         typeString: 
       - title: Sequence
@@ -3212,8 +3212,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 894.04254
-        y: 122.55319
+        x: 498.29785
+        y: 141.70213
         width: 160
         height: 30
     - id: 3
@@ -3257,25 +3257,7 @@ MonoBehaviour:
       delaySimStatus: 0
       falseConditionAction: Block
       conditionPriority: 2
-      outgoingLinks:
-      - originConversationID: 10
-        originDialogueID: 3
-        destinationConversationID: 10
-        destinationDialogueID: 5
-        isConnector: 0
-        priority: 2
-      - originConversationID: 10
-        originDialogueID: 3
-        destinationConversationID: 10
-        destinationDialogueID: 6
-        isConnector: 0
-        priority: 2
-      - originConversationID: 10
-        originDialogueID: 3
-        destinationConversationID: 10
-        destinationDialogueID: 7
-        isConnector: 0
-        priority: 2
+      outgoingLinks: []
       conditionsString: 
       userScript: 
       onExecute:
@@ -3381,8 +3363,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 319.95743
-        y: 324.19147
+        x: 186.9787
+        y: 348.65955
         width: 160
         height: 30
     - id: 6
@@ -3430,8 +3412,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 317.95743
-        y: 380.19153
+        x: 183.91489
+        y: 450.40424
         width: 160
         height: 30
     - id: 7
@@ -3479,8 +3461,8 @@ MonoBehaviour:
           m_Calls: []
       canvasRect:
         serializedVersion: 2
-        x: 322.95743
-        y: 443.19153
+        x: 396.36166
+        y: 496.38306
         width: 160
         height: 30
     entryGroups: []

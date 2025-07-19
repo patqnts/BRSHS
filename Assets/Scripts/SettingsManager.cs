@@ -11,6 +11,7 @@ public class SettingsManager : MonoBehaviour
 
     private void Start()
     {
+        Application.targetFrameRate = 60;
         volume = FindObjectOfType<Volume>();
         // Load saved settings on start
         LoadSettings();

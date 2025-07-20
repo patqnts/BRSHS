@@ -14,15 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: Coin
   TargetInventoryName: RogueMainInventory
+  Price: 30
+  ForceSlotIndex: 0
+  TargetIndex: 0
   Usable: 0
+  Consumable: 1
+  ConsumeQuantity: 1
   Equippable: 0
+  MoveWhenEquipped: 1
+  Droppable: 1
+  CanMoveObject: 1
+  CanSwapObject: 1
   Quantity: 1
   ItemName: Coin
   ShortDescription: A valuable piece of money
   Description: A coin is a small, flat, round piece of hard material such as metal
     or plastic used primarily as a medium of exchange or legal tender.
-  CanMoveObject: 1
-  CanSwapObject: 1
   Icon: {fileID: 21300004, guid: a1fbd1aaf76d0b94e88551b7c406ee2c, type: 3}
   Prefab: {fileID: 173960, guid: 34ef20a1c78365e4d90691ae5ce029a8, type: 3}
   DropProperties:

@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: HealthPotion
   TargetInventoryName: RogueMainInventory
+  Price: 30
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 1

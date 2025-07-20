@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     public bool canMove = true;
     public Vector2 lastMoveDir;
+    public Transform directionArrow; // assign in inspector
 
     private void Start()
     {
@@ -39,6 +40,13 @@ public class PlayerController : MonoBehaviour
         if (movementInput != Vector2.zero)
         {
             lastMoveDir = movementInput.normalized;
+        }
+
+        if (lastMoveDir != Vector2.zero && directionArrow != null)
+        {
+            float angle = Mathf.Atan2(lastMoveDir.y, lastMoveDir.x) * Mathf.Rad2Deg;
+            directionArrow.rotation = Quaternion.Euler(0, 0, angle - 90f);
+
         }
     }
 

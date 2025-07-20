@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4829572fcd2f98479c803ffaf809268, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  ItemID: rust_sword
+  ItemID: Sword
   TargetInventoryName: RogueMainInventory
+  Price: 10
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0

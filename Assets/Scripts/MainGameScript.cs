@@ -99,7 +99,7 @@ public class MainGameScript : MonoBehaviour
         ApplyPlayerData();
     }
 
-    private void ApplyPlayerData()
+    public void ApplyPlayerData()
     {
         Save();
         LoadPlayerData();

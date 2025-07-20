@@ -18,6 +18,7 @@ public class ShopManagerScript : MonoBehaviour
     public Button confirmDialogueBoxButton;
     public TextMeshProUGUI dialogueMessageText;
 
+    private PlayerScript playerScript;
     protected int _pickedQuantity = 0;
     public int Quantity = 1;
     public bool PickableIfInventoryIsFull = false;
@@ -29,6 +30,7 @@ public class ShopManagerScript : MonoBehaviour
 
     private void Start()
     {
+        playerScript = FindFirstObjectByType<PlayerScript>();
         InitializeLoadItems();
     }
     public void InitializeLoadItems()
@@ -69,6 +71,9 @@ public class ShopManagerScript : MonoBehaviour
     private void BuyItem(InventoryItem Item)
     {
         string playerID = "Player1";
+        MainGameScript.instance.playerScript.Coins -= Item.Price;
+        MainGameScript.instance.ApplyPlayerData();
+
         notificationDialogueBox.SetActive(false);
         Pick(Item, playerID);
     }

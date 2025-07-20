@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: LeatherHelmet
   TargetInventoryName: RogueMainInventory
+  Price: 10
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0

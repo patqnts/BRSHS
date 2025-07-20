@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: LegendaryHelmet
   TargetInventoryName: RogueMainInventory
+  Price: 100
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0

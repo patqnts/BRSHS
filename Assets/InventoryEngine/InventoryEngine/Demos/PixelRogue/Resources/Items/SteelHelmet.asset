@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ItemID: SteelHelmet
   TargetInventoryName: RogueMainInventory
+  Price: 50
   ForceSlotIndex: 0
   TargetIndex: 0
   Usable: 0

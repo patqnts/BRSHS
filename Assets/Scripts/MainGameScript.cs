@@ -1,11 +1,13 @@
 using cherrydev;
+using MoreMountains.InventoryEngine;
+using MoreMountains.Tools;
 using PixelCrushers.DialogueSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainGameScript : MonoBehaviour
+public class MainGameScript : MonoBehaviour, MMEventListener<MMInventoryEvent>
 {
     public static MainGameScript instance;
     // Start is called before the first frame update
@@ -13,6 +15,12 @@ public class MainGameScript : MonoBehaviour
     public PlayerScript playerScript;
     public PlayerController playerController;
     public PlantingScript plantingScript;
+
+    public Inventory Armor;
+    public Inventory Helmet;
+    public ArmorItem currentEquippedArmor;
+    public HelmetItem currentEquippedHelmet;
+
 
     [SerializeField] private DialogBehaviour dialogBehaviour;
     [SerializeField] private DialogNodeGraph[] dialogGraph;
@@ -23,6 +31,12 @@ public class MainGameScript : MonoBehaviour
     private void Awake()
     {
         instance = this;
+    }
+
+    public void InitializePlayerEquipmentInventory()
+    {
+        currentEquippedArmor = (ArmorItem)Armor.Content[0];
+        currentEquippedHelmet = (HelmetItem)Helmet.Content[0];
     }
     void Start()
     {
@@ -96,6 +110,22 @@ public class MainGameScript : MonoBehaviour
         }
 
         Debug.Log("Player Hurt");
+        ApplyPlayerData();
+    }
+
+
+    public void SetPlayerStats()
+    {
+        int baseHealth = 3;
+
+        currentEquippedArmor = (ArmorItem)Armor.Content[0];
+        currentEquippedHelmet = (HelmetItem)Helmet.Content[0];
+
+        int armorHealth = currentEquippedArmor?.BonusHealth ?? 0;
+        int helmetHealth = currentEquippedHelmet?.BonusHealth ?? 0;
+
+
+        playerScript.MaxHealth = baseHealth + armorHealth + helmetHealth;
         ApplyPlayerData();
     }
 
@@ -214,5 +244,37 @@ public class MainGameScript : MonoBehaviour
     public void LoadSceneByName(string name)
     {
         SceneManager.LoadScene(name);
+    }
+
+    public void OnMMEvent(MMInventoryEvent inventoryEvent)
+    {
+        if (inventoryEvent.InventoryEventType == MMInventoryEventType.ContentChanged 
+            )
+        {
+            
+                Debug.Log("CALL");
+
+                if (Armor != null && Helmet != null)
+                {
+
+                    SetPlayerStats();
+                }
+            
+            
+        }
+    }
+
+    protected virtual void OnEnable()
+    {
+        this.MMEventStartListening<MMInventoryEvent>();
+    }
+
+
+    /// <summary>
+    /// On Disable, we stop listening to MMInventoryEvents
+    /// </summary>
+    protected virtual void OnDisable()
+    {
+        this.MMEventStopListening<MMInventoryEvent>();
     }
 }

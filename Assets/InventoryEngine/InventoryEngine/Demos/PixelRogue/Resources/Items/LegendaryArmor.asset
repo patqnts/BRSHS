@@ -81,3 +81,4 @@ MonoBehaviour:
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
   ArmorIndex: 1
+  BonusHealth: 3

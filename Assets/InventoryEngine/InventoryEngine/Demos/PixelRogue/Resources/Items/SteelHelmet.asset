@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ebac50667a1e87a4cb566381b6ce3d8f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2ae48119936612b4b9678e7fc5dc3dbd, type: 3}
   m_Name: SteelHelmet
   m_EditorClassIdentifier: 
   ItemID: SteelHelmet
@@ -81,4 +81,4 @@ MonoBehaviour:
   DroppedSound: {fileID: 0}
   UseDefaultSoundsIfNull: 1
   ArmorIndex: 1
-  BonusHealth: 0
+  BonusHealth: 2

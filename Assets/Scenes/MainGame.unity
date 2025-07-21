@@ -14485,6 +14485,8 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   playerController: {fileID: 0}
   plantingScript: {fileID: 0}
+  Armor: {fileID: 961454718}
+  Helmet: {fileID: 843211410}
   dialogBehaviour: {fileID: 0}
   dialogGraph:
   - {fileID: 11400000, guid: b2a7add3c08d3494482c0fd910970e36, type: 2}
@@ -19241,7 +19243,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.046875
+  orthographic size: 2.8125
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -19266,7 +19268,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.675748, y: -6.8681397, z: -10}
+  m_LocalPosition: {x: 11.674919, y: -6.8681397, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -58074,6 +58076,10 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8751690246331627123, guid: 7356970be63b33142a0cdf9b89fb953e, type: 3}
+      propertyPath: weaponItem
+      value: 
+      objectReference: {fileID: 1395688336}
+    - target: {fileID: 8751690246331627123, guid: 7356970be63b33142a0cdf9b89fb953e, type: 3}
       propertyPath: attackRange
       value: 0.45
       objectReference: {fileID: 0}
@@ -58109,6 +58115,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 589747979}
+  - {fileID: 1637245544}
   - {fileID: 1011457112}
   - {fileID: 304787618}
   - {fileID: 527773918}
@@ -58126,4 +58133,3 @@ SceneRoots:
   - {fileID: 631895996}
   - {fileID: 1301403871}
   - {fileID: 1785957478}
-  - {fileID: 1637245544}

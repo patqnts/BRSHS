@@ -2,11 +2,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using MoreMountains.InventoryEngine;
+using Unity.VisualScripting;
 
 public class PlayerAttackScript : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private Button attackButton;
+    [SerializeField] Inventory weaponItem;
     private Animator animator;
     private PlayerController playerController;
 
@@ -84,7 +87,16 @@ public class PlayerAttackScript : MonoBehaviour
 
                 if (hit.TryGetComponent<IDamageable>(out var damageable))
                 {
-                    damageable.OnHit(attackDamage, attackDir, knockbackForce);
+                    
+
+                    WeaponItem weap = (WeaponItem)weaponItem.Content[0];
+                    var damage = 0;
+                    Debug.Log(weap.ItemName);
+                    if(weap != null)
+                    {
+                        damage = weap.AttackDamage;
+                    }
+                    damageable.OnHit(damage, attackDir, knockbackForce);
                     didHitAny = true;
                 }
             }

@@ -23,6 +23,12 @@ namespace MoreMountains.InventoryEngine
 		protected virtual void Start()
 		{
             MMGameEvent.Trigger("Load");
+			InitializePlayerData();
+
+        }
+		void InitializePlayerData()
+		{
+			MainGameScript.instance.InitializePlayerEquipmentInventory();      
 		}
 	}
 }

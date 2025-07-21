@@ -4,6 +4,8 @@ using Cinemachine;
 
 public class MinimapCameraDrag : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
+    [Range(0.1f, 1f)]
+    public float dragSensitivity = 1f;
     public CinemachineVirtualCamera virtualCam;
     public Transform player;
     public Transform dragTarget;
@@ -27,7 +29,7 @@ public class MinimapCameraDrag : MonoBehaviour, IPointerDownHandler, IPointerUpH
     void Start()
     {
         defaultMapSize = minimapRectTransform.sizeDelta;
-        zoomedMapSize = defaultMapSize * 1.5f; // Adjust zoom scale factor as needed
+        zoomedMapSize = defaultMapSize * 2f; // Adjust zoom scale factor as needed
     }
     void Update()
     {
@@ -77,7 +79,7 @@ public class MinimapCameraDrag : MonoBehaviour, IPointerDownHandler, IPointerUpH
                            - minimapCamera.ScreenToWorldPoint(new Vector3(lastPointerPosition.x, lastPointerPosition.y, 10f));
 
         // Apply world delta to drag target
-        dragTarget.position += new Vector3(worldDelta.x, worldDelta.y, 0f);
+        dragTarget.position += new Vector3(worldDelta.x, worldDelta.y, 0f) * dragSensitivity;
 
         lastPointerPosition = currentPointerPosition;
     }

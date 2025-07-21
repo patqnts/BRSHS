@@ -15,6 +15,7 @@ namespace MoreMountains.InventoryEngine
 		[Header("Weapon")]
 		/// the sprite to use to show the weapon when equipped
 		public Sprite WeaponSprite;
+		public int AttackDamage;
 
 		/// <summary>
 		/// What happens when the object is used 

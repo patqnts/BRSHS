@@ -14,6 +14,7 @@ namespace MoreMountains.InventoryEngine
 	{
 		[Header("Armor")]
 		public int ArmorIndex;
+		public int BonusHealth;
 
 		/// <summary>
 		/// What happens when the armor is equipped

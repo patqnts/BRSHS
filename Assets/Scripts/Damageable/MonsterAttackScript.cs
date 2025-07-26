@@ -15,7 +15,11 @@ public class MonsterAttackScript : MonoBehaviour
             {
                 //_sessionScript.currentHealth--;
                 MainGameScript.instance.DecreaseHealth(1);
-                this.gameObject.SetActive(false);
+                if (gameObject != null && gameObject.activeSelf)
+                {
+                    gameObject.SetActive(false);
+                }
+
             }
         }
     }
